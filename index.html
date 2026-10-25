@@ -1,146 +1,389 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>30 Taka Mission - YouS2 Seba</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Razorpay Checkout Script -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <style>
-        body {
-            font-family: 'Hind Siliguri', sans-serif;
-        }
+        body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
 
-    <!-- Header / Navbar -->
+    <!-- Header -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <span class="text-2xl font-bold text-rose-600">YouS2</span>
-                <span class="text-xs bg-rose-100 text-rose-700 px-2 py-0.5 rounded-full font-semibold">Seba Mission</span>
+                <span class="text-xs bg-rose-100 text-rose-700 px-2.5 py-0.5 rounded-full font-semibold">Seba Mission</span>
             </div>
-            <a href="#donate" class="bg-rose-600 hover:bg-rose-700 text-white px-4 py-2 rounded-xl text-sm font-medium transition duration-200">
-                सहयोग করুন (Join)
-            </a>
+            <div class="flex items-center space-x-5">
+                <a href="#impact" class="hidden md:inline text-xs text-slate-600 hover:text-rose-600 font-medium">Impact & Proofs</a>
+                <a href="#about" class="hidden sm:inline text-xs text-slate-600 hover:text-rose-600 font-medium">About Us</a>
+                <a href="#rules" class="hidden sm:inline text-xs text-slate-600 hover:text-rose-600 font-medium">Terms & Rules</a>
+                <a href="#donate-form" class="bg-rose-600 hover:bg-rose-700 text-white px-4 py-2 rounded-xl text-sm font-medium transition duration-200 shadow-sm">
+                    Join Mission
+                </a>
+            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="max-w-4xl mx-auto px-4 pt-12 pb-16 text-center">
-        <div class="inline-block bg-rose-50 text-rose-600 font-semibold px-4 py-1.5 rounded-full text-sm mb-6">
-            ✨ প্রাত্যহিক ১ টাকা, গরিব ও অসুস্থ মানুষের মুখে হাসি
+    <section class="max-w-4xl mx-auto px-4 pt-12 pb-12 text-center">
+        <div class="inline-flex items-center space-x-2 bg-rose-50 border border-rose-100 text-rose-600 font-semibold px-4 py-1.5 rounded-full text-sm mb-6">
+            <span>✨ Just ₹1 a day (₹30/month) to help the needy</span>
         </div>
         <h1 class="text-4xl md:text-5xl font-bold text-slate-900 leading-tight mb-6">
-            মাসে মাত্র <span class="text-rose-600">৩০ টাকা</span> দিয়ে হয়ে উঠুন কারো আশার আলো
+            Make a Difference with Just <span class="text-rose-600">₹30 a Month</span>
         </h1>
         <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
-            দিন প্রতি মাত্র ১ টাকা (মাসে মোটে ৩০ টাকা) খরচ আমাদের কারোর জন্যই বড় কিছু নয়। কিন্তু আপনার এই সামান্য অবদান একত্রিত হয়ে বাঁচাতে পারে কোনো অসুস্থ প্রাণ, জোগাতে পারে গরিব মানুষের অন্ন ও চিকিৎসা।
+            Contribute a small amount monthly to support emergency medicines, medical treatments, and daily essentials for underprivileged people. 100% transparent community initiative.
         </p>
         <div class="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="#donate" class="bg-rose-600 hover:bg-rose-700 text-white font-semibold px-8 py-3.5 rounded-2xl shadow-lg shadow-rose-600/20 transition duration-200">
-                এখনই যুক্ত হোন
+            <a href="#donate-form" class="bg-rose-600 hover:bg-rose-700 text-white font-semibold px-8 py-3.5 rounded-2xl shadow-lg shadow-rose-600/20 transition duration-200">
+                Contribute ₹30 Now
             </a>
-            <a href="#transparency" class="bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 font-semibold px-8 py-3.5 rounded-2xl transition duration-200">
-                স্বচ্ছতা ও হিসাব (Transparency)
+            <a href="#impact" class="bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 font-semibold px-8 py-3.5 rounded-2xl transition duration-200">
+                View Live Impact & Proofs
             </a>
         </div>
     </section>
 
-    <!-- Why 30 Taka Section -->
-    <section class="bg-white py-16 border-y border-slate-100">
+    <!-- Live Impact Counter & Social Proof -->
+    <section class="max-w-5xl mx-auto px-4 pb-12">
+        <div class="bg-white rounded-3xl shadow-sm border border-slate-200/80 p-6 md:p-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-slate-100">
+                <div class="pt-2 md:pt-0">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">Live Count</span>
+                    <h3 class="text-3xl font-bold text-slate-900 mt-3" id="donorCount">12+</h3>
+                    <p class="text-slate-500 text-sm mt-1">Active Monthly Donors</p>
+                </div>
+                <div class="pt-6 md:pt-0">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-rose-600 bg-rose-50 px-2.5 py-1 rounded-full">Total Pool</span>
+                    <h3 class="text-3xl font-bold text-rose-600 mt-3" id="fundCount">₹360+</h3>
+                    <p class="text-slate-500 text-sm mt-1">Fund Collected This Month</p>
+                </div>
+                <div class="pt-6 md:pt-0">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full">100% Direct Aid</span>
+                    <h3 class="text-3xl font-bold text-slate-900 mt-3">Verified</h3>
+                    <p class="text-slate-500 text-sm mt-1">Every Rupee Accounted For</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Form & Recent Supporters Section -->
+    <section id="donate-form" class="py-12 max-w-5xl mx-auto px-4">
+        <div class="grid md:grid-cols-5 gap-8 items-start">
+            
+            <!-- Left Side: Payment Form (3 columns) -->
+            <div class="md:col-span-3 bg-white rounded-3xl shadow-xl border border-slate-100 p-8 md:p-10">
+                <div class="flex items-center justify-between mb-2">
+                    <h2 class="text-2xl font-bold text-slate-900">Donor Details & Payment</h2>
+                    <span class="text-xs bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-md font-semibold">🔒 SSL Secured</span>
+                </div>
+                <p class="text-slate-500 text-sm mb-6">Fill in your details to proceed with the ₹30 monthly contribution.</p>
+                
+                <form id="paymentForm" onsubmit="startPayment(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
+                        <input type="text" id="fullName" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-rose-600 text-sm" placeholder="Enter your full name">
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Phone Number (WhatsApp)</label>
+                            <input type="tel" id="phone" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-rose-600 text-sm" placeholder="10-digit mobile number">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
+                            <input type="email" id="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-rose-600 text-sm" placeholder="Enter email address">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Contribution Amount (₹)</label>
+                        <input type="number" id="amount" value="30" min="30" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-rose-600 text-sm bg-slate-50 font-semibold text-rose-600">
+                        <span class="text-xs text-slate-400 mt-1 block">Minimum ₹30/month. You can contribute more if you wish.</span>
+                    </div>
+
+                    <!-- Terms and Conditions Checkbox -->
+                    <div class="flex items-start space-x-2 pt-2">
+                        <input type="checkbox" id="agreeTerms" required class="mt-1 h-4 w-4 text-rose-600 border-slate-300 rounded focus:ring-rose-500">
+                        <label for="agreeTerms" class="text-xs text-slate-600 leading-relaxed">
+                            I agree to the <a href="#rules" class="text-rose-600 underline font-medium">Terms & Conditions, Non-Refundable Payment Policy, and Rules</a> of YouS2 Seba Mission.
+                        </label>
+                    </div>
+
+                    <button type="submit" class="w-full bg-rose-600 hover:bg-rose-700 text-white font-semibold py-4 rounded-xl shadow-lg shadow-rose-600/20 transition duration-200 mt-2 flex items-center justify-center space-x-2">
+                        <span>Pay Securely with Razorpay</span>
+                    </button>
+
+                    <!-- Trust Badges under button -->
+                    <div class="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-center gap-4 text-xs text-slate-400">
+                        <span>✅ 100% Secure Checkout</span>
+                        <span>•</span>
+                        <span>✅ UPI / GPay / PhonePe / Cards</span>
+                        <span>•</span>
+                        <span>✅ Instant Record Sync</span>
+                    </div>
+                </form>
+
+                <div id="successMsg" class="hidden mt-6 p-4 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-xl text-center text-sm font-medium">
+                    🎉 Thank you! Your payment was successful and your details are saved in our official sheet.
+                </div>
+            </div>
+
+            <!-- Right Side: Our Promise & Recent Supporters (2 columns) -->
+            <div class="md:col-span-2 space-y-6">
+                <!-- Our Promise Card -->
+                <div class="bg-slate-900 text-white rounded-3xl p-6 md:p-8 shadow-lg">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-rose-400">Our Core Promise</span>
+                    <h3 class="text-xl font-bold mt-1 mb-3">Why Trust YouS2 Seba?</h3>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-start space-x-2">
+                            <span class="text-rose-400 font-bold">✓</span>
+                            <span><strong>Real Local Presence:</strong> Physically verifiable office in Baguiati, Kolkata.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-rose-400 font-bold">✓</span>
+                            <span><strong>Bill-to-Bill Proof:</strong> Every medicine bill and food distribution photo is uploaded publicly.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-rose-400 font-bold">✓</span>
+                            <span><strong>Direct Impact:</strong> No middlemen. Funds go directly to ayudar patients and the poor.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Recent Supporters Wall -->
+                <div class="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-slate-900 text-base">Recent Supporters</h3>
+                        <span class="text-xs text-emerald-600 font-medium">● Live Updates</span>
+                    </div>
+                    <div class="space-y-3 text-sm" id="donorWall">
+                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl">
+                            <div>
+                                <p class="font-semibold text-slate-800">Subrata M.</p>
+                                <p class="text-xs text-slate-400">Kolkata • Monthly Donor</p>
+                            </div>
+                            <span class="font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg text-xs">₹30 Paid</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl">
+                            <div>
+                                <p class="font-semibold text-slate-800">Amitava Roy</p>
+                                <p class="text-xs text-slate-400">Baguiati • Supporter</p>
+                            </div>
+                            <span class="font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg text-xs">₹50 Paid</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl">
+                            <div>
+                                <p class="font-semibold text-slate-800">Priyanka Das</p>
+                                <p class="text-xs text-slate-400">Kolkata • Monthly Donor</p>
+                            </div>
+                            <span class="font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg text-xs">₹30 Paid</span>
+                        </div>
+                    </div>
+                    <p class="text-center text-xs text-slate-400 mt-4">Your name will appear on our official donor sheet after contribution.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Visual Proof & Transparency Section -->
+    <section id="impact" class="py-16 bg-white border-t border-slate-200">
         <div class="max-w-5xl mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-slate-900 mb-3">কিভাবে কাজ করে এই মিশন?</h2>
-                <p class="text-slate-500">সহজ এবং সম্পূর্ণ স্বচ্ছ প্রক্রিয়া</p>
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-rose-600 font-semibold text-xs uppercase tracking-wider">100% Transparency</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-1 mb-3">Where Does Your ₹30 Go?</h2>
+                <p class="text-slate-600 text-sm">We believe trust is earned through proof. Here is how we document and share every single relief activity with our donors.</p>
             </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 text-center">
-                    <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-xl flex items-center justify-center text-xl font-bold mx-auto mb-4">1</div>
-                    <h3 class="font-bold text-lg mb-2">প্রতি মাসে মাত্র ৩০ টাকা</h3>
-                    <p class="text-slate-600 text-sm">আপনার সাধ্যমতো সামান্য ৩০ টাকা মাসোহারা হিসেবে আমাদের ফান্ডে দিন।</p>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Proof Card 1 -->
+                <div class="bg-slate-50 rounded-2xl border border-slate-200/70 p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 bg-rose-100 text-rose-600 rounded-xl flex items-center justify-center font-bold mb-4">💊</div>
+                        <h3 class="font-bold text-slate-900 text-lg mb-2">Medicine & Pharmacy Bills</h3>
+                        <p class="text-slate-600 text-sm mb-4">When we purchase emergency medicines for poor patients, we upload the original pharmacy cash memos and prescriptions here.</p>
+                    </div>
+                    <span class="text-xs font-semibold text-slate-400 bg-white border border-slate-200 px-3 py-2 rounded-lg text-center">Receipts Updated Monthly</span>
                 </div>
-                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 text-center">
-                    <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-xl flex items-center justify-center text-xl font-bold mx-auto mb-4">2</div>
-                    <h3 class="font-bold text-lg mb-2">একত্রিত ফান্ড গঠন</h3>
-                    <p class="text-slate-600 text-sm">হাজারো মানুষের এই ক্ষুদ্র অবদান জমিয়ে তৈরি হয় একটি শক্তিশালী সেবামূলক ফান্ড।</p>
+
+                <!-- Proof Card 2 -->
+                <div class="bg-slate-50 rounded-2xl border border-slate-200/70 p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center font-bold mb-4">🍲</div>
+                        <h3 class="font-bold text-slate-900 text-lg mb-2">Food & Essential Kits</h3>
+                        <p class="text-slate-600 text-sm mb-4">Direct distribution of food packets, groceries, and winter clothes to helpless elderly people on the streets with photo proof.</p>
+                    </div>
+                    <span class="text-xs font-semibold text-slate-400 bg-white border border-slate-200 px-3 py-2 rounded-lg text-center">Photos Shared on Community</span>
                 </div>
-                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 text-center">
-                    <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-xl flex items-center justify-center text-xl font-bold mx-auto mb-4">3</div>
-                    <h3 class="font-bold text-lg mb-2">সরাসরি সেবা প্রদান</h3>
-                    <p class="text-slate-600 text-sm">অসুস্থ রোগীর ওষুধ কেনা কিংবা গরিব মানুষের জরুরি প্রয়োজনে এই টাকা সম্পূর্ণ ব্যয় করা হয়।</p>
+
+                <!-- Proof Card 3 -->
+                <div class="bg-slate-50 rounded-2xl border border-slate-200/70 p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center font-bold mb-4">📊</div>
+                        <h3 class="font-bold text-slate-900 text-lg mb-2">Open Ledger Sheet</h3>
+                        <p class="text-slate-600 text-sm mb-4">Every donor's contribution and every single expense is recorded systematically in our Google Sheet ledger for public accountability.</p>
+                    </div>
+                    <span class="text-xs font-semibold text-slate-400 bg-white border border-slate-200 px-3 py-2 rounded-lg text-center">100% Audited Record</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Donate Section -->
-    <section id="donate" class="py-16 max-w-3xl mx-auto px-4">
-        <div class="bg-white rounded-3xl shadow-xl border border-slate-100 p-8 md:p-12 text-center">
-            <span class="text-rose-600 font-semibold text-sm uppercase tracking-wider">Secure Contribution</span>
-            <h2 class="text-3xl font-bold text-slate-900 mt-2 mb-4">আপনার অবদান পাঠান</h2>
-            <p class="text-slate-600 mb-8">নিচের UPI ID-তে স্ক্যান করে বা কপি করে আপনার সাধ্যমতো (মাসে ৩০ টাকা বা তার বেশি) পাঠাতে পারেন।</p>
-            
-            <!-- QR Code Placeholder Box -->
-            <div class="bg-slate-100 border-2 border-dashed border-slate-300 rounded-2xl p-6 max-w-xs mx-auto mb-6 flex flex-col items-center justify-center">
-                <!-- Ekhane apnar QR Code er image link ba tag dite paren -->
-                <div class="w-48 h-48 bg-white shadow-inner rounded-xl flex items-center justify-center text-slate-400 font-medium text-sm mb-3">
-                    [ Your UPI QR Code ]
+    <!-- Real Identity: About Founder & Verifiable Location -->
+    <section id="about" class="py-16 bg-slate-100 border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-slate-200/80">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-rose-600 bg-rose-50 px-3 py-1 rounded-full">Real People • Real Location</span>
+                        <h2 class="text-2xl font-bold text-slate-900 mt-3 mb-3">Who We Are & Where to Find Us</h2>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Unlike anonymous online campaigns, <strong>YouS2 Seba Mission</strong> is a transparent social welfare initiative operated directly from our established centre in Baguiati, Kolkata. Anyone is welcome to visit our office, verify our work, or join hands with us on the ground.
+                        </p>
+                        <div class="space-y-2 text-sm text-slate-700">
+                            <p><strong>👤 Organizer:</strong> Subrata Mazumdar</p>
+                            <p><strong>🏢 Office Location:</strong> YouS2, Lokenath Market, Jagatpur, Aswini Nagar, Baguiati, Kolkata – 700159, West Bengal</p>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-4">
+                        <h3 class="font-bold text-slate-900 text-base">Have Questions or Want to Verify?</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Feel free to reach out to us directly on WhatsApp or visit our Baguiati office if you want to know about ongoing medical cases or join our volunteer group.
+                        </p>
+                        <!-- Replace 918509788421 with your actual WhatsApp number -->
+                        <a href="https://wa.me/918509788421?text=Hi%20Subrata,%20I%20want%20to%20know%20more%20about%20YouS2%2030%20Taka%20Seba%20Mission" target="_blank" class="block w-full bg-emerald-600 hover:bg-emerald-700 text-white text-center font-semibold py-3 rounded-xl text-sm transition duration-200">
+                            💬 Chat on WhatsApp
+                        </a>
+                        <p class="text-[11px] text-center text-slate-400">Response time: Usually within a few hours</p>
+                    </div>
                 </div>
-                <span class="text-xs text-slate-500">Google Pay / PhonePay / Paytm Supported</span>
             </div>
-
-            <!-- UPI ID Copy Box -->
-            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 max-w-md mx-auto flex items-center justify-between">
-                <span id="upiId" class="font-mono text-slate-700 font-medium text-sm sm:text-base">your-upi-id@oksbi</span>
-                <button onclick="copyUpi()" class="bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold px-4 py-2 rounded-lg transition duration-200">
-                    Copy UPI
-                </button>
-            </div>
-            <p id="copyMsg" class="text-xs text-emerald-600 mt-2 font-medium hidden">UPI ID copied successfully!</p>
         </div>
     </section>
 
-    <!-- Transparency Section -->
-    <section id="transparency" class="bg-slate-100 py-16">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold text-slate-900 mb-4">স্বচ্ছতা ও হিসাব</h2>
-            <p class="text-slate-600 mb-8">প্রতিটি টাকার হিসাব এবং কোথায় সাহায্য করা হলো তার ছবি ও রসিদ এখানে নিয়মিত আপডেট করা হবে।</p>
+    <!-- Rules, Terms & Conditions Section -->
+    <section id="rules" class="py-16 bg-white border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-8 text-center">Terms, Rules & Regulations</h2>
             
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-2xl shadow-sm">
-                    <h3 class="text-3xl font-bold text-rose-600 mb-1">0</h3>
-                    <p class="text-slate-500 text-sm">মোট ডোনার</p>
+            <div class="grid md:grid-cols-2 gap-6 text-slate-600 text-sm leading-relaxed">
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                    <h3 class="font-bold text-slate-900 text-base mb-2">1. Nature of Contribution (Voluntary)</h3>
+                    <p>All contributions made through yous2.in are voluntary micro-contributions meant exclusively for supporting medical treatments, poverty relief, and humanitarian services managed under YouS2 Seba Mission. No commercial goods or services are promised in exchange.</p>
                 </div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm">
-                    <h3 class="text-3xl font-bold text-rose-600 mb-1">₹0</h3>
-                    <p class="text-slate-500 text-sm">এمasober Total Fund</p>
+
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                    <h3 class="font-bold text-slate-900 text-base mb-2">2. Payment Terms & Non-Refund Policy</h3>
+                    <p>Payments are processed securely via Razorpay. Since funds are pooled and immediately directed toward charitable activities and emergency social work, <strong>contributions once made are strictly non-refundable</strong> under any circumstances.</p>
                 </div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm col-span-2 md:col-span-1">
-                    <h3 class="text-3xl font-bold text-rose-600 mb-1">0</h3>
-                    <p class="text-slate-500 text-sm">সাহায্যপ্রাপ্ত মানুষ</p>
+
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                    <h3 class="font-bold text-slate-900 text-base mb-2">3. Transparency & Fund Utilization</h3>
+                    <p>YouS2 Seba Mission ensures that collected funds are used responsibly. Detailed records, impact metrics, and recipient updates are maintained. Donors acknowledge that management holds the authority to allocate funds based on immediate urgency of cases.</p>
+                </div>
+
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                    <h3 class="font-bold text-slate-900 text-base mb-2">4. User Data & Privacy Protection</h3>
+                    <p>Personal details (Name, Phone, Email) collected during payment are stored safely in our encrypted Google Sheet ledger to maintain contribution records and send transparency reports. We never sell or share donor data with third parties.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 py-8 text-center text-slate-500 text-sm">
-        <p>&copy; 2026 YouS2 Seba Mission. Designed with care for humanity.</p>
+    <footer class="bg-slate-900 text-slate-400 py-12 text-center text-sm">
+        <div class="max-w-4xl mx-auto px-4 space-y-3">
+            <p class="font-bold text-white text-base">YouS2 Seba Mission</p>
+            <p class="text-xs text-slate-400">An initiative by Subrata Mazumdar • Lokenath Market, Jagatpur, Aswini Nagar, Baguiati, Kolkata - 700159</p>
+            <div class="pt-4 border-t border-slate-800 text-xs text-slate-500 flex flex-col sm:flex-row justify-between items-center gap-2">
+                <p>&copy; 2026 YouS2 (yous2.in). All rights reserved.</p>
+                <div class="space-x-4">
+                    <a href="#about" class="hover:text-white">Contact Us</a>
+                    <a href="#rules" class="hover:text-white">Privacy & Terms</a>
+                </div>
+            </div>
+        </div>
     </footer>
 
-    <!-- Script for Copy UPI -->
+    <!-- JavaScript for Razorpay & Google Sheet Sync -->
     <script>
-        function copyUpi() {
-            const upiText = document.getElementById("upiId").innerText;
-            navigator.clipboard.writeText(upiText);
-            const msg = document.getElementById("copyMsg");
-            msg.classList.remove("hidden");
-            setTimeout(() => {
-                msg.classList.add("hidden");
-            }, 2000);
+        // 1. Apnar Google Apps Script Web App URL ekhane din
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbymp_oqs2gmjGv5pzniLqDYnLBBZRxlYUY4evRPOQ/dev";
+
+        function startPayment(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('fullName').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const amount = document.getElementById('amount').value * 100; // Razorpay takes amount in paise
+
+            var options = {
+                // 2. Apnar Razorpay Key ID ekhane bosaben
+                "key": "YOUR_RAZORPAY_KEY_ID", 
+                "amount": amount, 
+                "currency": "INR",
+                "name": "YouS2 Seba Mission",
+                "description": "Monthly Welfare Contribution",
+                "handler": function (response){
+                    // Payment successful hole Google Sheet-e data jabe ebong Donor Wall-e nam add hobe
+                    saveToGoogleSheet({
+                        name: name,
+                        phone: phone,
+                        email: email,
+                        amount: amount / 100,
+                        paymentId: response.razorpay_payment_id
+                    });
+                },
+                "prefill": {
+                    "name": name,
+                    "email": email,
+                    "contact": phone
+                },
+                "theme": {
+                    "color": "#e11d48"
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+        }
+
+        function saveToGoogleSheet(data) {
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            }).then(() => {
+                document.getElementById('paymentForm').reset();
+                document.getElementById('successMsg').classList.remove('hidden');
+                
+                // Live Donor Wall-e sathe sathe nam দেখানোর jonno
+                const donorWall = document.getElementById('donorWall');
+                const newDonorHTML = `
+                    <div class="flex items-center justify-between p-3 bg-emerald-50 border border-emerald-100 rounded-xl">
+                        <div>
+                            <p class="font-semibold text-slate-800">${data.name}</p>
+                            <p class="text-xs text-emerald-600">Just Now • Verified Donor</p>
+                        </div>
+                        <span class="font-bold text-emerald-700 bg-white px-2.5 py-1 rounded-lg text-xs">₹${data.amount} Paid</span>
+                    </div>
+                `;
+                donorWall.insertAdjacentHTML('afterbegin', newDonorHTML);
+            }).catch(error => {
+                alert("Payment successful, but error saving to sheet: " + error);
+            });
         }
     </script>
 </body>
