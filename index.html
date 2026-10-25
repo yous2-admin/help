@@ -291,6 +291,7 @@
 
         let currentLang = 'en';
 
+// Website load holei Google Sheet theke live data anbe ebong update korbe
         window.addEventListener('DOMContentLoaded', () => {
             document.getElementById('upiIdDisplay').innerText = MY_UPI_ID;
             updateUpiLinks();
@@ -301,6 +302,7 @@
                     if (data.totalDonors > 0) {
                         document.getElementById('donorCount').innerText = data.totalDonors + "+";
                         document.getElementById('fundCount').innerText = "₹" + data.totalFund;
+                        
                         const donorWall = document.getElementById('donorWall');
                         donorWall.innerHTML = "";
                         data.recentDonors.forEach(d => {
@@ -308,14 +310,14 @@
                                 <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl">
                                     <div>
                                         <p class="font-semibold text-slate-800">${d.name}</p>
-                                        <p class="text-xs text-slate-400">Supporter</p>
+                                        <p class="text-xs text-slate-400">Verified Supporter</p>
                                     </div>
                                     <span class="font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg text-xs">₹${d.amount} Paid</span>
                                 </div>
                             `;
                         });
                     }
-                }).catch(err => console.log("Live sync waiting."));
+                }).catch(err => console.log("Live sync waiting for data."));
         });
 
         function toggleLanguage() {
