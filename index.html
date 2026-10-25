@@ -82,14 +82,24 @@
         <div class="grid md:grid-cols-5 gap-8 items-start">
             
             <!-- Left Side: Payment Form (3 columns) -->
-            <div class="md:col-span-3 bg-white rounded-3xl shadow-xl border border-slate-100 p-8 md:p-10">
+            <div class="md:col-span-3 bg-white rounded-3xl shadow-xl border border-slate-100 p-6 sm:p-8 md:p-10">
                 <div class="flex items-center justify-between mb-2">
                     <h2 class="text-2xl font-bold text-slate-900">Donor Details & Payment</h2>
                     <span class="text-xs bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-md font-semibold">🔒 SSL Secured</span>
                 </div>
-                <p class="text-slate-500 text-sm mb-6">Fill in your details to proceed with the ₹30 monthly contribution.</p>
+                <p class="text-slate-500 text-sm mb-6">Fill in your details and choose your preferred payment method below.</p>
                 
-                <form id="paymentForm" onsubmit="startPayment(event)" class="space-y-4">
+                <!-- Payment Method Selector Tabs -->
+                <div class="grid grid-cols-2 gap-2 p-1 bg-slate-100 rounded-xl mb-6">
+                    <button type="button" id="tabUpi" onclick="switchMethod('upi')" class="py-2.5 text-xs sm:text-sm font-bold rounded-lg bg-white text-rose-600 shadow-sm transition">
+                        📱 Direct UPI QR (0% Fee)
+                    </button>
+                    <button type="button" id="tabRazorpay" onclick="switchMethod('razorpay')" class="py-2.5 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition">
+                        💳 Razorpay Gateway
+                    </button>
+                </div>
+
+                <form id="paymentForm" onsubmit="handleSubmission(event)" class="space-y-4">
                     <div>
                         <label class="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
                         <input type="text" id="fullName" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-rose-600 text-sm" placeholder="Enter your full name">
@@ -106,8 +116,36 @@
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-slate-700 mb-1">Contribution Amount (₹)</label>
-                        <input type="number" id="amount" value="30" min="30" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-rose-600 text-sm bg-slate-50 font-semibold text-rose-600">
-                        <span class="text-xs text-slate-400 mt-1 block">Minimum ₹30/month. You can contribute more if you wish.</span>
+                        <input type="number" id="amount" value="30" min="30" oninput="updateQrCode()" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-rose-600 text-sm bg-slate-50 font-semibold text-rose-600">
+                        <span class="text-xs text-slate-400 mt-1 block">Minimum ₹30/month. QR code automatically updates with amount.</span>
+                    </div>
+
+                    <!-- Direct UPI QR Box (Visible by Default) -->
+                    <div id="upiSection" class="bg-slate-50 border border-slate-200 rounded-2xl p-5 text-center space-y-4">
+                        <div class="inline-block bg-emerald-100 text-emerald-800 text-xs font-semibold px-3 py-1 rounded-full">
+                            ✨ Scan with GPay, PhonePe, Paytm or any UPI App
+                        </div>
+                        
+                        <!-- Auto Generated Dynamic UPI QR Code -->
+                        <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-200 inline-block">
+                            <img id="dynamicQr" src="" alt="Scan UPI QR Code" class="w-44 h-44 mx-auto rounded-lg">
+                        </div>
+
+                        <!-- Copy UPI ID Option -->
+                        <div class="flex items-center justify-between bg-white border border-slate-200 rounded-xl px-3 py-2 max-w-xs mx-auto">
+                            <span id="upiIdDisplay" class="font-mono text-xs sm:text-sm text-slate-700 font-medium truncate">your-upi-id@okaxis</span>
+                            <button type="button" onclick="copyUpiId()" class="bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition">
+                                Copy ID
+                            </button>
+                        </div>
+                        <p id="copyToast" class="text-xs text-emerald-600 font-medium hidden">✅ UPI ID Copied!</p>
+
+                        <!-- UTR / Transaction ID Input -->
+                        <div class="text-left pt-2">
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Enter 12-Digit UPI Ref / UTR Number (After Payment) *</label>
+                            <input type="text" id="utrNumber" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-rose-600 text-sm bg-white" placeholder="e.g. 429812345678">
+                            <span class="text-[11px] text-slate-400 mt-1 block">Pay korar por app theke 12-digit UTR ba Transaction ID-ti ekhane likhe submit korun.</span>
+                        </div>
                     </div>
 
                     <!-- Terms and Conditions Checkbox -->
@@ -118,22 +156,22 @@
                         </label>
                     </div>
 
-                    <button type="submit" class="w-full bg-rose-600 hover:bg-rose-700 text-white font-semibold py-4 rounded-xl shadow-lg shadow-rose-600/20 transition duration-200 mt-2 flex items-center justify-center space-x-2">
-                        <span>Pay Securely with Razorpay</span>
+                    <button type="submit" id="submitBtn" class="w-full bg-rose-600 hover:bg-rose-700 text-white font-semibold py-4 rounded-xl shadow-lg shadow-rose-600/20 transition duration-200 mt-2 flex items-center justify-center space-x-2">
+                        <span id="btnText">Submit UPI Payment Details</span>
                     </button>
 
                     <!-- Trust Badges under button -->
                     <div class="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-center gap-4 text-xs text-slate-400">
-                        <span>✅ 100% Secure Checkout</span>
+                        <span>✅ 100% Secure</span>
                         <span>•</span>
-                        <span>✅ UPI / GPay / PhonePe / Cards</span>
+                        <span>✅ UPI / GPay / PhonePe</span>
                         <span>•</span>
-                        <span>✅ Instant Record Sync</span>
+                        <span>✅ Instant Google Sheet Sync</span>
                     </div>
                 </form>
 
                 <div id="successMsg" class="hidden mt-6 p-4 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-xl text-center text-sm font-medium">
-                    🎉 Thank you! Your payment was successful and your details are saved in our official sheet.
+                    🎉 Thank you! Your contribution details have been saved in our official ledger sheet.
                 </div>
             </div>
 
@@ -205,7 +243,6 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-6">
-                <!-- Proof Card 1 -->
                 <div class="bg-slate-50 rounded-2xl border border-slate-200/70 p-6 flex flex-col justify-between">
                     <div>
                         <div class="w-10 h-10 bg-rose-100 text-rose-600 rounded-xl flex items-center justify-center font-bold mb-4">💊</div>
@@ -215,7 +252,6 @@
                     <span class="text-xs font-semibold text-slate-400 bg-white border border-slate-200 px-3 py-2 rounded-lg text-center">Receipts Updated Monthly</span>
                 </div>
 
-                <!-- Proof Card 2 -->
                 <div class="bg-slate-50 rounded-2xl border border-slate-200/70 p-6 flex flex-col justify-between">
                     <div>
                         <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center font-bold mb-4">🍲</div>
@@ -225,7 +261,6 @@
                     <span class="text-xs font-semibold text-slate-400 bg-white border border-slate-200 px-3 py-2 rounded-lg text-center">Photos Shared on Community</span>
                 </div>
 
-                <!-- Proof Card 3 -->
                 <div class="bg-slate-50 rounded-2xl border border-slate-200/70 p-6 flex flex-col justify-between">
                     <div>
                         <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center font-bold mb-4">📊</div>
@@ -282,7 +317,7 @@
 
                 <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
                     <h3 class="font-bold text-slate-900 text-base mb-2">2. Payment Terms & Non-Refund Policy</h3>
-                    <p>Payments are processed securely via Razorpay. Since funds are pooled and immediately directed toward charitable activities and emergency social work, <strong>contributions once made are strictly non-refundable</strong> under any circumstances.</p>
+                    <p>Payments are processed securely via UPI or Razorpay. Since funds are pooled and immediately directed toward charitable activities and emergency social work, <strong>contributions once made are strictly non-refundable</strong> under any circumstances.</p>
                 </div>
 
                 <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
@@ -313,13 +348,25 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Razorpay & Google Sheet Sync -->
+    <!-- JavaScript for UPI QR, Razorpay & Google Sheet Sync -->
     <script>
         // 1. Apnar Google Apps Script Web App URL set kora ache
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz3J_U0Vj-IKuYalgj0BPTpgBpfjzhYsPA_WjZPeRNn4DRORCOrmi9q5lDJD-IC0zc/exec";
 
-        // Website load holei Google Sheet theke live data anbe (Eta baire thakbe)
+        // 2. Apnar nijer UPI ID ekhane bosaben (Dynamic QR code auto toiri hobe)
+        const MY_UPI_ID = "8509788421@okbizaxis"; 
+        const MERCHANT_NAME = "YouS2 Seba Mission";
+
+        // 3. Apnar Razorpay Key ID (jodi Razorpay tab use koren)
+        const RAZORPAY_KEY_ID = "YOUR_RAZORPAY_KEY_ID";
+
+        let currentMethod = 'upi'; // Default method
+
+        // Website load hole QR code generate hobe ebong Google Sheet theke live data anbe
         window.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('upiIdDisplay').innerText = MY_UPI_ID;
+            updateQrCode();
+
             fetch(GOOGLE_SCRIPT_URL)
                 .then(res => res.json())
                 .then(data => {
@@ -344,45 +391,97 @@
                 }).catch(err => console.log("Live sync waiting for data."));
         });
 
-        function startPayment(event) {
+        // Amount change korle automatic sei takar UPI QR Code generate hobe
+        function updateQrCode() {
+            const amount = document.getElementById('amount').value || 30;
+            const upiString = `upi://pay?pa=${MY_UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${amount}&cu=INR`;
+            const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(upiString)}`;
+            document.getElementById('dynamicQr').src = qrApiUrl;
+        }
+
+        // Tab Switcher (Direct UPI vs Razorpay)
+        function switchMethod(method) {
+            currentMethod = method;
+            const upiSection = document.getElementById('upiSection');
+            const utrInput = document.getElementById('utrNumber');
+            const tabUpi = document.getElementById('tabUpi');
+            const tabRazorpay = document.getElementById('tabRazorpay');
+            const btnText = document.getElementById('btnText');
+
+            if (method === 'upi') {
+                upiSection.classList.remove('hidden');
+                utrInput.required = true;
+                tabUpi.className = "py-2.5 text-xs sm:text-sm font-bold rounded-lg bg-white text-rose-600 shadow-sm transition";
+                tabRazorpay.className = "py-2.5 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition";
+                btnText.innerText = "Submit UPI Payment Details";
+            } else {
+                upiSection.classList.add('hidden');
+                utrInput.required = false;
+                tabRazorpay.className = "py-2.5 text-xs sm:text-sm font-bold rounded-lg bg-white text-rose-600 shadow-sm transition";
+                tabUpi.className = "py-2.5 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition";
+                btnText.innerText = "Pay Securely with Razorpay";
+            }
+        }
+
+        function copyUpiId() {
+            navigator.clipboard.writeText(MY_UPI_ID);
+            const toast = document.getElementById('copyToast');
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 2500);
+        }
+
+        function handleSubmission(event) {
             event.preventDefault();
             
             const name = document.getElementById('fullName').value;
             const phone = document.getElementById('phone').value;
             const email = document.getElementById('email').value;
-            const amount = document.getElementById('amount').value * 100; // Razorpay takes amount in paise
+            const amount = document.getElementById('amount').value;
 
-            var options = {
-                // 2. Apnar Razorpay Key ID ekhane bosaben
-                "key": "rzp_live_0iIcGMvG5LjrrG", 
-                "amount": amount, 
-                "currency": "INR",
-                "name": "YouS2 Seba Mission",
-                "description": "Monthly Welfare Contribution",
-                "handler": function (response){
-                    // Payment successful hole Google Sheet-e data jabe ebong Donor Wall-e nam add hobe
-                    saveToGoogleSheet({
-                        name: name,
-                        phone: phone,
-                        email: email,
-                        amount: amount / 100,
-                        paymentId: response.razorpay_payment_id
-                    });
-                },
-                "prefill": {
-                    "name": name,
-                    "email": email,
-                    "contact": phone
-                },
-                "theme": {
-                    "color": "#e11d48"
-                }
-            };
-            var rzp1 = new Razorpay(options);
-            rzp1.open();
+            if (currentMethod === 'upi') {
+                const utr = document.getElementById('utrNumber').value.trim();
+                saveToGoogleSheet({
+                    name: name,
+                    phone: phone,
+                    email: email,
+                    amount: amount,
+                    paymentId: "UPI-UTR: " + utr
+                });
+            } else {
+                var options = {
+                    "key": RAZORPAY_KEY_ID, 
+                    "amount": amount * 100, 
+                    "currency": "INR",
+                    "name": "YouS2 Seba Mission",
+                    "description": "Monthly Welfare Contribution",
+                    "handler": function (response){
+                        saveToGoogleSheet({
+                            name: name,
+                            phone: phone,
+                            email: email,
+                            amount: amount,
+                            paymentId: response.razorpay_payment_id
+                        });
+                    },
+                    "prefill": {
+                        "name": name,
+                        "email": email,
+                        "contact": phone
+                    },
+                    "theme": {
+                        "color": "#e11d48"
+                    }
+                };
+                var rzp1 = new Razorpay(options);
+                rzp1.open();
+            }
         }
 
         function saveToGoogleSheet(data) {
+            const btnText = document.getElementById('btnText');
+            const originalText = btnText.innerText;
+            btnText.innerText = "Saving Record...";
+
             fetch(GOOGLE_SCRIPT_URL, {
                 method: "POST",
                 mode: "no-cors",
@@ -391,10 +490,11 @@
                 },
                 body: JSON.stringify(data)
             }).then(() => {
+                btnText.innerText = originalText;
                 document.getElementById('paymentForm').reset();
+                updateQrCode();
                 document.getElementById('successMsg').classList.remove('hidden');
                 
-                // Live Donor Wall-e sathe sathe nam dekhanor jonno
                 const donorWall = document.getElementById('donorWall');
                 const newDonorHTML = `
                     <div class="flex items-center justify-between p-3 bg-emerald-50 border border-emerald-100 rounded-xl">
@@ -407,7 +507,8 @@
                 `;
                 donorWall.insertAdjacentHTML('afterbegin', newDonorHTML);
             }).catch(error => {
-                alert("Payment successful, but error saving to sheet: " + error);
+                btnText.innerText = originalText;
+                alert("Error saving to sheet: " + error);
             });
         }
     </script>
