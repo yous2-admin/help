@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>30 Taka Mission - YouS2 Seba</title>
+    <title>Seba Mission - YouS2</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Razorpay Checkout Script -->
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Inter', 'Hind Siliguri', sans-serif; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
@@ -20,14 +20,19 @@
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <span class="text-2xl font-bold text-rose-600">YouS2</span>
-                <span class="text-xs bg-rose-100 text-rose-700 px-2.5 py-0.5 rounded-full font-semibold">Seba Mission</span>
+                <span class="text-xs bg-rose-100 text-rose-700 px-2.5 py-0.5 rounded-full font-semibold" data-en="Seba Mission" data-bn="সেবা মিশন">Seba Mission</span>
             </div>
-            <div class="flex items-center space-x-5">
-                <a href="#impact" class="hidden md:inline text-xs text-slate-600 hover:text-rose-600 font-medium">Impact & Proofs</a>
-                <a href="#about" class="hidden sm:inline text-xs text-slate-600 hover:text-rose-600 font-medium">About Us</a>
-                <a href="#rules" class="hidden sm:inline text-xs text-slate-600 hover:text-rose-600 font-medium">Terms & Rules</a>
-                <a href="#donate-form" class="bg-rose-600 hover:bg-rose-700 text-white px-4 py-2 rounded-xl text-sm font-medium transition duration-200 shadow-sm">
-                    Join Mission
+            <div class="flex items-center space-x-3 sm:space-x-5">
+                <a href="#gallery" class="hidden md:inline text-xs text-slate-600 hover:text-rose-600 font-medium" data-en="Photo Gallery" data-bn="গ্যালারি">Gallery</a>
+                <a href="#apply-help" class="text-xs text-blue-600 hover:text-blue-700 font-semibold bg-blue-50 px-3 py-1.5 rounded-lg" data-en="Need Help?" data-bn="সাহায্য চান?">Need Help?</a>
+                
+                <!-- Language Switcher Button -->
+                <button onclick="toggleLanguage()" id="langBtn" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-lg transition">
+                    🇧🇩 বাংলা
+                </button>
+
+                <a href="#donate-form" class="bg-rose-600 hover:bg-rose-700 text-white px-4 py-2 rounded-xl text-sm font-medium transition duration-200 shadow-sm" data-en="Contribute" data-bn="সহযোগিতা করুন">
+                    Contribute
                 </a>
             </div>
         </div>
@@ -36,320 +41,237 @@
     <!-- Hero Section -->
     <section class="max-w-4xl mx-auto px-4 pt-12 pb-12 text-center">
         <div class="inline-flex items-center space-x-2 bg-rose-50 border border-rose-100 text-rose-600 font-semibold px-4 py-1.5 rounded-full text-sm mb-6">
-            <span>✨ Just ₹1 a day (₹30/month) to help the needy</span>
+            <span data-en="✨ Open-Hearted Contribution to Help the Needy" data-bn="✨ অসুস্থ ও গরিব মানুষের সেবায় আপনার ইচ্ছামতো সহায়তা">✨ Open-Hearted Contribution to Help the Needy</span>
         </div>
         <h1 class="text-4xl md:text-5xl font-bold text-slate-900 leading-tight mb-6">
-            Make a Difference with Just <span class="text-rose-600">₹30 a Month</span>
+            <span data-en="Support Humanity with" data-bn="মানবতার সেবায় এগিয়ে আসুন">Support Humanity with</span> <span class="text-rose-600" data-en="Any Amount You Wish" data-bn="আপনার ইচ্ছামতো যেকোনো পরিমাণ দিয়ে">Any Amount You Wish</span>
         </h1>
-        <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
-            Contribute a small amount monthly to support emergency medicines, medical treatments, and daily essentials for underprivileged people. 100% transparent community initiative.
+        <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-8" data-en="There is no fixed amount. Contribute whatever you wish to support emergency medicines, medical treatments, and daily essentials for underprivileged people. 100% transparent initiative." data-bn="এখানে কোনো নির্দিষ্ট পরিমাণ নেই। অসুস্থ ও গরিব মানুষের জরুরি ওষুধ এবং নিত্যপ্রয়োজনীয় সহায়তার জন্য আপনার সাধ্যমতো যেকোনো অঙ্কের টাকা দিয়ে পাশে দাঁড়ান। ১০০% স্বচ্ছ উদ্যোগ।">
+            There is no fixed amount. Contribute whatever you wish to support emergency medicines, medical treatments, and daily essentials for underprivileged people. 100% transparent initiative.
         </p>
         <div class="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="#donate-form" class="bg-rose-600 hover:bg-rose-700 text-white font-semibold px-8 py-3.5 rounded-2xl shadow-lg shadow-rose-600/20 transition duration-200">
-                Contribute ₹30 Now
+            <a href="#donate-form" class="bg-rose-600 hover:bg-rose-700 text-white font-semibold px-8 py-3.5 rounded-2xl shadow-lg shadow-rose-600/20 transition duration-200" data-en="Contribute Now" data-bn="এখনই সহায়তা করুন">
+                Contribute Now
             </a>
-            <a href="#impact" class="bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 font-semibold px-8 py-3.5 rounded-2xl transition duration-200">
-                View Live Impact & Proofs
+            <a href="#gallery" class="bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 font-semibold px-8 py-3.5 rounded-2xl transition duration-200" data-en="View Photo Gallery" data-bn="কাজের ছবি দেখুন">
+                View Photo Gallery
             </a>
         </div>
     </section>
 
-    <!-- Live Impact Counter & Social Proof -->
+    <!-- Live Impact Counter -->
     <section class="max-w-5xl mx-auto px-4 pb-12">
         <div class="bg-white rounded-3xl shadow-sm border border-slate-200/80 p-6 md:p-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-slate-100">
                 <div class="pt-2 md:pt-0">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">Live Count</span>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full" data-en="Total Donors" data-bn="মোট দাতা">Total Donors</span>
                     <h3 class="text-3xl font-bold text-slate-900 mt-3" id="donorCount">12+</h3>
-                    <p class="text-slate-500 text-sm mt-1">Active Monthly Donors</p>
+                    <p class="text-slate-500 text-sm mt-1" data-en="Kind-hearted Contributors" data-bn="সহযোগিতাকারী ব্যক্তিবর্গ">Kind-hearted Contributors</p>
                 </div>
                 <div class="pt-6 md:pt-0">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-rose-600 bg-rose-50 px-2.5 py-1 rounded-full">Total Pool</span>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-rose-600 bg-rose-50 px-2.5 py-1 rounded-full" data-en="Total Pool" data-bn="মোট ফান্ড">Total Pool</span>
                     <h3 class="text-3xl font-bold text-rose-600 mt-3" id="fundCount">₹360+</h3>
-                    <p class="text-slate-500 text-sm mt-1">Fund Collected This Month</p>
+                    <p class="text-slate-500 text-sm mt-1" data-en="Total Fund Collected" data-bn="মোট সংগৃহীত ফান্ড">Total Fund Collected</p>
                 </div>
                 <div class="pt-6 md:pt-0">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full">100% Direct Aid</span>
-                    <h3 class="text-3xl font-bold text-slate-900 mt-3">Verified</h3>
-                    <p class="text-slate-500 text-sm mt-1">Instant Email Receipt</p>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full" data-en="100% Direct Aid" data-bn="১০০% সরাসরি সেবা">100% Direct Aid</span>
+                    <h3 class="text-3xl font-bold text-slate-900 mt-3" data-en="Verified" data-bn="যাচাইকৃত">Verified</h3>
+                    <p class="text-slate-500 text-sm mt-1" data-en="Instant Certificate" data-bn="তক্ষণাৎ সার্টিফিকেট">Instant Certificate</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Donation Form & Recent Supporters Section -->
+    <!-- Donation Form & Certificate Section -->
     <section id="donate-form" class="py-12 max-w-5xl mx-auto px-4">
         <div class="grid md:grid-cols-5 gap-8 items-start">
             
-            <!-- Left Side: Payment Form (3 columns) -->
             <div class="md:col-span-3 bg-white rounded-3xl shadow-xl border border-slate-100 p-6 sm:p-8 md:p-10">
                 <div class="flex items-center justify-between mb-2">
-                    <h2 class="text-2xl font-bold text-slate-900">Donor Details & Payment</h2>
+                    <h2 class="text-2xl font-bold text-slate-900" data-en="Donor Details & Payment" data-bn="দাতা এবং পেমেন্ট বিবরণী">Donor Details & Payment</h2>
                     <span class="text-xs bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-md font-semibold">🔒 SSL Secured</span>
                 </div>
-                <p class="text-slate-500 text-sm mb-6">Fill in your details to receive an instant official receipt on your email.</p>
+                <p class="text-slate-500 text-sm mb-6" data-en="Enter any amount you wish to contribute and get an instant digital certificate." data-bn="আপনার ইচ্ছামতো যেকোনো পরিমাণ টাকা দিয়ে অফিসিয়াল সার্টিফিকেট ও রসিদ নিন।">Enter any amount you wish to contribute and get an instant digital certificate.</p>
                 
-                <!-- Payment Method Selector Tabs -->
-                <div class="grid grid-cols-2 gap-2 p-1 bg-slate-100 rounded-xl mb-6">
-                    <button type="button" id="tabUpi" onclick="switchMethod('upi')" class="py-2.5 text-xs sm:text-sm font-bold rounded-lg bg-white text-rose-600 shadow-sm transition">
-                        📱 Direct UPI / App (0% Fee)
-                    </button>
-                    <button type="button" id="tabRazorpay" onclick="switchMethod('razorpay')" class="py-2.5 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition">
-                        💳 Razorpay Gateway
-                    </button>
-                </div>
-
                 <form id="paymentForm" onsubmit="handleSubmission(event)" class="space-y-4">
                     <div>
-                        <label class="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
+                        <label class="block text-sm font-medium text-slate-700 mb-1" data-en="Full Name" data-bn="পুরো নাম">Full Name</label>
                         <input type="text" id="fullName" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-rose-600 text-sm" placeholder="Enter your full name">
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">Phone Number (WhatsApp)</label>
+                            <label class="block text-sm font-medium text-slate-700 mb-1" data-en="Phone Number (WhatsApp)" data-bn="ফোন নম্বর (হোয়াটসঅ্যাপ)">Phone Number (WhatsApp)</label>
                             <input type="tel" id="phone" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-rose-600 text-sm" placeholder="10-digit mobile number">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">Email Address (For Receipt)</label>
+                            <label class="block text-sm font-medium text-slate-700 mb-1" data-en="Email Address (For Certificate)" data-bn="ইমেইল ঠিকানা (সার্টিফিকেটের জন্য)">Email Address (For Certificate)</label>
                             <input type="email" id="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-rose-600 text-sm" placeholder="Enter email address">
                         </div>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-slate-700 mb-1">Contribution Amount (₹)</label>
-                        <input type="number" id="amount" value="30" min="30" oninput="updateUpiLinks()" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-rose-600 text-sm bg-slate-50 font-semibold text-rose-600">
-                        <span class="text-xs text-slate-400 mt-1 block">Minimum ₹30/month. QR & App button automatically update with amount.</span>
+                        <label class="block text-sm font-medium text-slate-700 mb-1" data-en="Enter Amount You Wish to Give (₹)" data-bn="আপনি কত টাকা দিতে চান তা লিখুন (₹)">Enter Amount You Wish to Give (₹)</label>
+                        <input type="number" id="amount" value="50" min="1" oninput="updateUpiLinks()" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-rose-600 text-sm bg-slate-50 font-semibold text-rose-600" placeholder="Enter amount">
                     </div>
 
-                    <!-- Direct UPI App & QR Box (Visible by Default) -->
-                    <div id="upiSection" class="bg-slate-50 border border-slate-200 rounded-2xl p-5 text-center space-y-4">
-                        
-                        <!-- 1-Click Mobile UPI App Deep Link Button -->
+                    <!-- Direct UPI App & QR Box -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 text-center space-y-4">
                         <div class="space-y-2">
-                            <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 block">Step 1: Pay via UPI App or Scan QR</span>
-                            <a id="upiDeepLink" href="#" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-md shadow-emerald-600/20 transition flex items-center justify-center space-x-2 text-sm">
-                                <span>🚀 Open GPay / PhonePe / Paytm App</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 block" data-en="Step 1: Pay via UPI App or Scan QR" data-bn="ধাপ ১: ইউপিআই অ্যাপ দিয়ে পেমেন্ট করুন বা কিউআর কোড স্ক্যান করুন">Step 1: Pay via UPI App or Scan QR</span>
+                            <a id="upiDeepLink" href="#" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-md transition flex items-center justify-center space-x-2 text-sm">
+                                <span data-en="🚀 Open GPay / PhonePe / Paytm App" data-bn="🚀 জিপে / ফোনপে / পেটিএম অ্যাপ খুলুন">🚀 Open GPay / PhonePe / Paytm App</span>
                             </a>
-                            <span class="text-[11px] text-slate-400 block">Works directly on mobile phones • Or scan QR below</span>
                         </div>
 
-                        <!-- Auto Generated Dynamic UPI QR Code -->
                         <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-200 inline-block">
                             <img id="dynamicQr" src="" alt="Scan UPI QR Code" class="w-40 h-40 mx-auto rounded-lg">
                         </div>
 
-                        <!-- Copy UPI ID Option -->
-                        <div class="flex items-center justify-between bg-white border border-slate-200 rounded-xl px-3 py-2 max-w-xs mx-auto">
-                            <span id="upiIdDisplay" class="font-mono text-xs sm:text-sm text-slate-700 font-medium truncate">your-upi-id@okaxis</span>
-                            <button type="button" onclick="copyUpiId()" class="bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition">
-                                Copy ID
-                            </button>
-                        </div>
-                        <p id="copyToast" class="text-xs text-emerald-600 font-medium hidden">✅ UPI ID Copied!</p>
-
-                        <!-- UTR / Transaction ID Input -->
                         <div class="text-left pt-3 border-t border-slate-200">
-                            <label class="block text-xs font-bold text-slate-800 mb-1">Step 2: Enter 12-Digit UPI Ref / UTR Number *</label>
+                            <label class="block text-xs font-bold text-slate-800 mb-1" data-en="Step 2: Enter 12-Digit UPI Ref / UTR Number *" data-bn="ধাপ ২: ১২-ডিজিটের ইউপিআই রেফ / ইউটিআর নম্বর দিন *">Step 2: Enter 12-Digit UPI Ref / UTR Number *</label>
                             <input type="text" id="utrNumber" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-rose-600 text-sm bg-white" placeholder="e.g. 429812345678">
-                            <span class="text-[11px] text-slate-500 mt-1 block">Pay করার পর পেমেন্ট অ্যাপ থেকে 12-digit UTR / Ref ID এখানে লিখে নিচে Submit করুন।</span>
                         </div>
                     </div>
 
-                    <!-- Terms and Conditions Checkbox -->
-                    <div class="flex items-start space-x-2 pt-2">
-                        <input type="checkbox" id="agreeTerms" required class="mt-1 h-4 w-4 text-rose-600 border-slate-300 rounded focus:ring-rose-500">
-                        <label for="agreeTerms" class="text-xs text-slate-600 leading-relaxed">
-                            I agree to the <a href="#rules" class="text-rose-600 underline font-medium">Terms & Conditions, Non-Refundable Payment Policy, and Rules</a> of YouS2 Seba Mission.
-                        </label>
-                    </div>
-
-                    <button type="submit" id="submitBtn" class="w-full bg-rose-600 hover:bg-rose-700 text-white font-semibold py-4 rounded-xl shadow-lg shadow-rose-600/20 transition duration-200 mt-2 flex items-center justify-center space-x-2">
-                        <span id="btnText">Submit & Get Instant Receipt</span>
+                    <button type="submit" id="submitBtn" class="w-full bg-rose-600 hover:bg-rose-700 text-white font-semibold py-4 rounded-xl shadow-lg transition duration-200 mt-2 flex items-center justify-center space-x-2">
+                        <span id="btnText" data-en="Submit & Download Certificate" data-bn="জমা দিন ও সার্টিফিকেট ডাউনলোড করুন">Submit & Download Certificate</span>
                     </button>
-
-                    <!-- Trust Badges under button -->
-                    <div class="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-center gap-4 text-xs text-slate-400">
-                        <span>✅ Instant Email Receipt</span>
-                        <span>•</span>
-                        <span>✅ UPI / GPay / PhonePe</span>
-                        <span>•</span>
-                        <span>✅ Live Sheet Sync</span>
-                    </div>
                 </form>
 
-                <!-- Instant On-Screen Receipt Card (Hidden until payment) -->
-                <div id="receiptCard" class="hidden mt-6 bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-6 text-left space-y-3">
+                <!-- Instant Certificate & Receipt Card -->
+                <div id="receiptCard" class="hidden mt-6 bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-6 text-left space-y-4">
                     <div class="flex items-center justify-between border-b border-emerald-200 pb-3">
                         <div>
-                            <span class="text-xs font-bold uppercase text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-full">✅ Payment Recorded</span>
-                            <h3 class="text-lg font-bold text-slate-900 mt-1">Official Contribution Receipt</h3>
+                            <span class="text-xs font-bold uppercase text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-full">🏆 Donor Verified</span>
+                            <h3 class="text-lg font-bold text-slate-900 mt-1">YouS2 Life Saver Certificate</h3>
                         </div>
-                        <span class="text-2xl">🎉</span>
+                        <span class="text-2xl">✨</span>
                     </div>
-                    <div class="text-xs sm:text-sm text-slate-700 space-y-1.5">
-                        <p><strong>Donor Name:</strong> <span id="recName"></span></p>
-                        <p><strong>Amount Paid:</strong> <span class="text-emerald-700 font-bold" id="recAmount"></span></p>
-                        <p><strong>Reference ID:</strong> <span class="font-mono" id="recRef"></span></p>
+                    <div class="text-xs sm:text-sm text-slate-700 space-y-1">
+                        <p><strong>Donor Name:</strong> <span id="recName" class="font-bold"></span></p>
+                        <p><strong>Contribution:</strong> <span class="text-emerald-700 font-bold" id="recAmount"></span></p>
                         <p><strong>Date:</strong> <span id="recDate"></span></p>
                     </div>
-                    <p class="text-xs text-emerald-800 pt-2 border-t border-emerald-200/60 font-medium">
-                        📩 A copy of this receipt has also been sent to your email address!
-                    </p>
+                    <button type="button" onclick="downloadCertificate()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl text-sm transition shadow-md">
+                        📥 Download Official Certificate (PNG)
+                    </button>
                 </div>
             </div>
 
-            <!-- Right Side: Our Promise & Recent Supporters (2 columns) -->
+            <!-- Recent Supporters -->
             <div class="md:col-span-2 space-y-6">
-                <!-- Our Promise Card -->
                 <div class="bg-slate-900 text-white rounded-3xl p-6 md:p-8 shadow-lg">
                     <span class="text-xs font-semibold uppercase tracking-wider text-rose-400">Our Core Promise</span>
                     <h3 class="text-xl font-bold mt-1 mb-3">Why Trust YouS2 Seba?</h3>
                     <ul class="space-y-3 text-sm text-slate-300">
                         <li class="flex items-start space-x-2">
                             <span class="text-rose-400 font-bold">✓</span>
-                            <span><strong>Real Local Presence:</strong> Physically verifiable office in Baguiati, Kolkata.</span>
+                            <span><strong>Verifiable Office:</strong> Baguiati, Kolkata - 700159.</span>
                         </li>
                         <li class="flex items-start space-x-2">
                             <span class="text-rose-400 font-bold">✓</span>
-                            <span><strong>Bill-to-Bill Proof:</strong> Every medicine bill and food distribution photo is uploaded publicly.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-rose-400 font-bold">✓</span>
-                            <span><strong>Automated Receipt:</strong> Instant email receipt and live Google Sheet entry for every donor.</span>
+                            <span><strong>Flexible Contribution:</strong> Give any amount you wish, big or small.</span>
                         </li>
                     </ul>
                 </div>
 
-                <!-- Recent Supporters Wall -->
                 <div class="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm">
                     <div class="flex items-center justify-between mb-4">
-                        <h3 class="font-bold text-slate-900 text-base">Recent Supporters</h3>
-                        <span class="text-xs text-emerald-600 font-medium">● Live Updates</span>
+                        <h3 class="font-bold text-slate-900 text-base" data-en="Recent Supporters" data-bn="সাম্প্রতিক দাতা">Recent Supporters</h3>
+                        <span class="text-xs text-emerald-600 font-medium">● Live</span>
                     </div>
                     <div class="space-y-3 text-sm" id="donorWall">
                         <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl">
                             <div>
                                 <p class="font-semibold text-slate-800">Subrata M.</p>
-                                <p class="text-xs text-slate-400">Kolkata • Monthly Donor</p>
+                                <p class="text-xs text-slate-400">Kolkata • Supporter</p>
                             </div>
-                            <span class="font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg text-xs">₹30 Paid</span>
-                        </div>
-                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl">
-                            <div>
-                                <p class="font-semibold text-slate-800">Amitava Roy</p>
-                                <p class="text-xs text-slate-400">Baguiati • Supporter</p>
-                            </div>
-                            <span class="font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg text-xs">₹50 Paid</span>
-                        </div>
-                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl">
-                            <div>
-                                <p class="font-semibold text-slate-800">Priyanka Das</p>
-                                <p class="text-xs text-slate-400">Kolkata • Monthly Donor</p>
-                            </div>
-                            <span class="font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg text-xs">₹30 Paid</span>
+                            <span class="font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg text-xs">₹100 Paid</span>
                         </div>
                     </div>
-                    <p class="text-center text-xs text-slate-400 mt-4">Your name will appear on our official donor sheet after contribution.</p>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- Visual Proof & Transparency Section -->
-    <section id="impact" class="py-16 bg-white border-t border-slate-200">
+    <!-- PHOTO GALLERY SECTION -->
+    <section id="gallery" class="py-16 bg-white border-t border-slate-200">
         <div class="max-w-5xl mx-auto px-4">
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <span class="text-rose-600 font-semibold text-xs uppercase tracking-wider">100% Transparency</span>
-                <h2 class="text-3xl font-bold text-slate-900 mt-1 mb-3">Where Does Your ₹30 Go?</h2>
-                <p class="text-slate-600 text-sm">We believe trust is earned through proof. Here is how we document and share every single relief activity with our donors.</p>
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-rose-600 font-semibold text-xs uppercase tracking-wider" data-en="Visual Proofs" data-bn="কাজের প্রমাণ">Visual Proofs</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-1 mb-3" data-en="Our Relief & Service Gallery" data-bn="আমাদের সেবা ও ত্রাণ গ্যালারি">Our Relief & Service Gallery</h2>
+                <p class="text-slate-600 text-sm" data-en="Photos of medicine distribution, food kits, and pharmacy bills from our ground work." data-bn="মাঠপর্যায়ের ওষুধ বিতরণ ও খাদ্য সহায়তার ছবি।">Photos of medicine distribution, food kits, and pharmacy bills from our ground work.</p>
+                
+                <div class="mt-6">
+                    <label class="inline-flex items-center space-x-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold px-5 py-2.5 rounded-xl cursor-pointer text-xs shadow-md transition">
+                        <span>📷 Upload Photo from Phone</span>
+                        <input type="file" accept="image/*" onchange="uploadPhoto(event)" class="hidden">
+                    </label>
+                    <span class="text-[11px] text-slate-400 block mt-1">Select any photo from your phone gallery to add instantly.</span>
+                </div>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-slate-50 rounded-2xl border border-slate-200/70 p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="w-10 h-10 bg-rose-100 text-rose-600 rounded-xl flex items-center justify-center font-bold mb-4">💊</div>
-                        <h3 class="font-bold text-slate-900 text-lg mb-2">Medicine & Pharmacy Bills</h3>
-                        <p class="text-slate-600 text-sm mb-4">When we purchase emergency medicines for poor patients, we upload the original pharmacy cash memos and prescriptions here.</p>
+            <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
+                    <div class="h-48 bg-slate-200 flex items-center justify-center text-slate-400 font-medium text-sm">
+                        [ Medicine Distribution ]
                     </div>
-                    <span class="text-xs font-semibold text-slate-400 bg-white border border-slate-200 px-3 py-2 rounded-lg text-center">Receipts Updated Monthly</span>
-                </div>
-
-                <div class="bg-slate-50 rounded-2xl border border-slate-200/70 p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center font-bold mb-4">🍲</div>
-                        <h3 class="font-bold text-slate-900 text-lg mb-2">Food & Essential Kits</h3>
-                        <p class="text-slate-600 text-sm mb-4">Direct distribution of food packets, groceries, and winter clothes to helpless elderly people on the streets with photo proof.</p>
+                    <div class="p-4">
+                        <span class="text-[11px] font-bold text-rose-600 bg-rose-50 px-2.5 py-0.5 rounded-full">Medical Aid</span>
+                        <h3 class="font-bold text-slate-900 text-base mt-2">Emergency Medicine Seba</h3>
                     </div>
-                    <span class="text-xs font-semibold text-slate-400 bg-white border border-slate-200 px-3 py-2 rounded-lg text-center">Photos Shared on Community</span>
-                </div>
-
-                <div class="bg-slate-50 rounded-2xl border border-slate-200/70 p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center font-bold mb-4">📊</div>
-                        <h3 class="font-bold text-slate-900 text-lg mb-2">Open Ledger Sheet</h3>
-                        <p class="text-slate-600 text-sm mb-4">Every donor's contribution and every single expense is recorded systematically in our Google Sheet ledger for public accountability.</p>
-                    </div>
-                    <span class="text-xs font-semibold text-slate-400 bg-white border border-slate-200 px-3 py-2 rounded-lg text-center">100% Audited Record</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Real Identity: About Founder & Verifiable Location -->
-    <section id="about" class="py-16 bg-slate-100 border-t border-slate-200">
-        <div class="max-w-4xl mx-auto px-4">
-            <div class="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-slate-200/80">
-                <div class="grid md:grid-cols-2 gap-8 items-center">
-                    <div>
-                        <span class="text-xs font-bold uppercase tracking-wider text-rose-600 bg-rose-50 px-3 py-1 rounded-full">Real People • Real Location</span>
-                        <h2 class="text-2xl font-bold text-slate-900 mt-3 mb-3">Who We Are & Where to Find Us</h2>
-                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                            Unlike anonymous online campaigns, <strong>YouS2 Seba Mission</strong> is a transparent social welfare initiative operated directly from our established centre in Baguiati, Kolkata. Anyone is welcome to visit our office, verify our work, or join hands with us on the ground.
-                        </p>
-                        <div class="space-y-2 text-sm text-slate-700">
-                            <p><strong>👤 Organizer:</strong> Subrata Mazumdar</p>
-                            <p><strong>🏢 Office Location:</strong> YouS2, Lokenath Market, Jagatpur, Aswini Nagar, Baguiati, Kolkata – 700159, West Bengal</p>
+    <!-- Apply for Help Section -->
+    <section id="apply-help" class="py-16 bg-blue-50/60 border-t border-blue-100">
+        <div class="max-w-3xl mx-auto px-4">
+            <div class="bg-white rounded-3xl shadow-md border border-blue-100 p-6 sm:p-8 md:p-10">
+                <div class="text-center max-w-xl mx-auto mb-8">
+                    <span class="bg-blue-100 text-blue-700 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">For Needy</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-3 mb-2" data-en="Apply for Medical or Food Help" data-bn="চিকিৎসা বা খাবারের জন্য আবেদন করুন">Apply for Medical or Food Help</h2>
+                </div>
+
+                <form id="helpForm" onsubmit="submitHelpRequest(event)" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Applicant Name *</label>
+                            <input type="text" id="helpName" required class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm" placeholder="Enter name">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">WhatsApp Number *</label>
+                            <input type="tel" id="helpPhone" required class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm" placeholder="10-digit mobile">
                         </div>
                     </div>
-                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-4">
-                        <h3 class="font-bold text-slate-900 text-base">Have Questions or Want to Verify?</h3>
-                        <p class="text-xs text-slate-500 leading-relaxed">
-                            Feel free to reach out to us directly on WhatsApp or visit our Baguiati office if you want to know about ongoing medical cases or join our volunteer group.
-                        </p>
-                        <a href="https://wa.me/918509788421?text=Hi%20Subrata,%20I%20want%20to%20know%20more%20about%20YouS2%2030%20Taka%20Seba%20Mission" target="_blank" class="block w-full bg-emerald-600 hover:bg-emerald-700 text-white text-center font-semibold py-3 rounded-xl text-sm transition duration-200">
-                            💬 Chat on WhatsApp
-                        </a>
-                        <p class="text-[11px] text-center text-slate-400">Response time: Usually within a few hours</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Location / Address *</label>
+                            <input type="text" id="helpLocation" required class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm" placeholder="e.g. Baguiati, Kolkata">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Help Category *</label>
+                            <select id="helpCategory" required class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm bg-white">
+                                <option value="Emergency Medicine">💊 Emergency Medicine</option>
+                                <option value="Food & Groceries">🍲 Food Support</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Describe Problem *</label>
+                        <textarea id="helpDetails" rows="3" required class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm" placeholder="Briefly explain requirement..."></textarea>
+                    </div>
+                    <button type="submit" id="helpSubmitBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 rounded-xl shadow-lg transition">
+                        Submit Help Application
+                    </button>
+                </form>
 
-    <!-- Rules, Terms & Conditions Section -->
-    <section id="rules" class="py-16 bg-white border-t border-slate-200">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-8 text-center">Terms, Rules & Regulations</h2>
-            
-            <div class="grid md:grid-cols-2 gap-6 text-slate-600 text-sm leading-relaxed">
-                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                    <h3 class="font-bold text-slate-900 text-base mb-2">1. Nature of Contribution (Voluntary)</h3>
-                    <p>All contributions made through yous2.in are voluntary micro-contributions meant exclusively for supporting medical treatments, poverty relief, and humanitarian services managed under YouS2 Seba Mission. No commercial goods or services are promised in exchange.</p>
-                </div>
-
-                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                    <h3 class="font-bold text-slate-900 text-base mb-2">2. Payment Terms & Non-Refund Policy</h3>
-                    <p>Payments are processed securely via UPI or Razorpay. Since funds are pooled and immediately directed toward charitable activities and emergency social work, <strong>contributions once made are strictly non-refundable</strong> under any circumstances.</p>
-                </div>
-
-                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                    <h3 class="font-bold text-slate-900 text-base mb-2">3. Transparency & Fund Utilization</h3>
-                    <p>YouS2 Seba Mission ensures that collected funds are used responsibly. Detailed records, impact metrics, and recipient updates are maintained. Donors acknowledge that management holds the authority to allocate funds based on immediate urgency of cases.</p>
-                </div>
-
-                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                    <h3 class="font-bold text-slate-900 text-base mb-2">4. User Data & Privacy Protection</h3>
-                    <p>Personal details (Name, Phone, Email) collected during payment are stored safely in our encrypted Google Sheet ledger to maintain contribution records and send transparency reports. We never sell or share donor data with third parties.</p>
+                <div id="helpSuccessMsg" class="hidden mt-6 p-5 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-2xl text-center space-y-3">
+                    <p class="font-bold">✅ Application recorded successfully!</p>
+                    <a id="helpWhatsappLink" href="#" target="_blank" class="inline-block bg-emerald-600 text-white font-semibold px-6 py-2.5 rounded-xl text-xs">
+                        📲 Send Prescription on WhatsApp
+                    </a>
                 </div>
             </div>
         </div>
@@ -360,33 +282,25 @@
         <div class="max-w-4xl mx-auto px-4 space-y-3">
             <p class="font-bold text-white text-base">YouS2 Seba Mission</p>
             <p class="text-xs text-slate-400">An initiative by Subrata Mazumdar • Lokenath Market, Jagatpur, Aswini Nagar, Baguiati, Kolkata - 700159</p>
-            <div class="pt-4 border-t border-slate-800 text-xs text-slate-500 flex flex-col sm:flex-row justify-between items-center gap-2">
-                <p>&copy; 2026 YouS2 (yous2.in). All rights reserved.</p>
-                <div class="space-x-4">
-                    <a href="#about" class="hover:text-white">Contact Us</a>
-                    <a href="#rules" class="hover:text-white">Privacy & Terms</a>
-                </div>
-            </div>
+            <p class="text-xs">&copy; 2026 YouS2 (yous2.in). All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- JavaScript for UPI Deep Link, QR, Razorpay & Google Sheet Sync -->
-    <script>
-        // 1. Apnar Google Apps Script Web App URL set kora ache
-        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz3J_U0Vj-IKuYalgj0BPTpgBpfjzhYsPA_WjZPeRNn4DRORCOrmi9q5lDJD-IC0zc/exec";
+    <!-- Hidden Canvas for Certificate Generation -->
+    <canvas id="certCanvas" width="900" height="650" style="display:none;"></canvas>
 
-        // 2. Apnar nijer UPI ID ekhane bosaben
-        const MY_UPI_ID = "8509788421@okbizaxis"; 
+    <!-- JavaScript Engine -->
+    <script>
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz3J_U0Vj-IKuYalgj0BPTpgBpfjzhYsPA_WjZPeRNn4DRORCOrmi9q5lDJD-IC0zc/exec";
+        const MY_UPI_ID = "your-upi-id@okaxis"; 
         const MERCHANT_NAME = "YouS2 Seba Mission";
 
-        // 3. Apnar Razorpay Key ID (jodi Razorpay tab use koren)
-        const RAZORPAY_KEY_ID = "YOUR_RAZORPAY_KEY_ID";
-
-        let currentMethod = 'upi';
+        let currentLang = 'en';
 
         window.addEventListener('DOMContentLoaded', () => {
             document.getElementById('upiIdDisplay').innerText = MY_UPI_ID;
             updateUpiLinks();
+            loadGalleryPhotos();
 
             fetch(GOOGLE_SCRIPT_URL)
                 .then(res => res.json())
@@ -394,7 +308,6 @@
                     if (data.totalDonors > 0) {
                         document.getElementById('donorCount').innerText = data.totalDonors + "+";
                         document.getElementById('fundCount').innerText = "₹" + data.totalFund;
-                        
                         const donorWall = document.getElementById('donorWall');
                         donorWall.innerHTML = "";
                         data.recentDonors.forEach(d => {
@@ -402,145 +315,229 @@
                                 <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl">
                                     <div>
                                         <p class="font-semibold text-slate-800">${d.name}</p>
-                                        <p class="text-xs text-slate-400">Verified Donor</p>
+                                        <p class="text-xs text-slate-400">Supporter</p>
                                     </div>
                                     <span class="font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg text-xs">₹${d.amount} Paid</span>
                                 </div>
                             `;
                         });
                     }
-                }).catch(err => console.log("Live sync waiting for data."));
+                }).catch(err => console.log("Live sync waiting."));
         });
 
-        // Amount change korle automatic UPI App Button Link ebong QR Code update hobe
-        function updateUpiLinks() {
-            const amount = document.getElementById('amount').value || 30;
-            const upiUri = `upi://pay?pa=${MY_UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${amount}&cu=INR&tn=${encodeURIComponent("YouS2 Seba Contribution")}`;
-            
-            // Update Mobile Deep Link Button
-            document.getElementById('upiDeepLink').href = upiUri;
-            
-            // Update QR Code Image
-            const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(upiUri)}`;
-            document.getElementById('dynamicQr').src = qrApiUrl;
-        }
-
-        function switchMethod(method) {
-            currentMethod = method;
-            const upiSection = document.getElementById('upiSection');
-            const utrInput = document.getElementById('utrNumber');
-            const tabUpi = document.getElementById('tabUpi');
-            const tabRazorpay = document.getElementById('tabRazorpay');
-            const btnText = document.getElementById('btnText');
-
-            if (method === 'upi') {
-                upiSection.classList.remove('hidden');
-                utrInput.required = true;
-                tabUpi.className = "py-2.5 text-xs sm:text-sm font-bold rounded-lg bg-white text-rose-600 shadow-sm transition";
-                tabRazorpay.className = "py-2.5 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition";
-                btnText.innerText = "Submit & Get Instant Receipt";
-            } else {
-                upiSection.classList.add('hidden');
-                utrInput.required = false;
-                tabRazorpay.className = "py-2.5 text-xs sm:text-sm font-bold rounded-lg bg-white text-rose-600 shadow-sm transition";
-                tabUpi.className = "py-2.5 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition";
-                btnText.innerText = "Pay Securely with Razorpay";
+        function uploadPhoto(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const imgData = e.target.result;
+                    let photos = JSON.parse(localStorage.getItem('yous2_gallery') || '[]');
+                    photos.unshift(imgData);
+                    localStorage.setItem('yous2_gallery', JSON.stringify(photos));
+                    loadGalleryPhotos();
+                    alert("✅ Photo uploaded successfully to gallery!");
+                }
+                reader.readAsDataURL(file);
             }
         }
 
-        function copyUpiId() {
-            navigator.clipboard.writeText(MY_UPI_ID);
-            const toast = document.getElementById('copyToast');
-            toast.classList.remove('hidden');
-            setTimeout(() => toast.classList.add('hidden'), 2500);
+        function loadGalleryPhotos() {
+            const grid = document.getElementById('galleryGrid');
+            let photos = JSON.parse(localStorage.getItem('yous2_gallery') || '[]');
+            
+            let html = `
+                <div class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
+                    <div class="h-48 bg-slate-200 flex items-center justify-center text-slate-400 font-medium text-sm">
+                        [ Medicine Distribution ]
+                    </div>
+                    <div class="p-4">
+                        <span class="text-[11px] font-bold text-rose-600 bg-rose-50 px-2.5 py-0.5 rounded-full">Medical Aid</span>
+                        <h3 class="font-bold text-slate-900 text-base mt-2">Emergency Medicine Seba</h3>
+                    </div>
+                </div>
+            `;
+
+            photos.forEach((photo, index) => {
+                html += `
+                    <div class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
+                        <img src="${photo}" alt="Relief Photo" class="w-full h-48 object-cover">
+                        <div class="p-4 flex justify-between items-center">
+                            <div>
+                                <span class="text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full">Ground Work</span>
+                                <h3 class="font-bold text-slate-900 text-sm mt-1">Seba Moment #${index + 1}</h3>
+                            </div>
+                            <button onclick="deletePhoto(${index})" class="text-red-500 text-xs font-semibold px-2 py-1 bg-red-50 rounded-md hover:bg-red-100">Delete</button>
+                        </div>
+                    </div>
+                `;
+            });
+            grid.innerHTML = html;
         }
+
+        function deletePhoto(index) {
+            if(confirm("Are you sure you want to delete this photo?")) {
+                let photos = JSON.parse(localStorage.getItem('yous2_gallery') || '[]');
+                photos.splice(index, 1);
+                localStorage.setItem('yous2_gallery', JSON.stringify(photos));
+                loadGalleryPhotos();
+            }
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'bn' : 'en';
+            document.getElementById('langBtn').innerText = currentLang === 'en' ? '🇧🇩 বাংলা' : '🇬🇧 English';
+            document.querySelectorAll('[data-en]').forEach(el => {
+                el.innerText = el.getAttribute(`data-${currentLang}`);
+            });
+        }
+
+        function updateUpiLinks() {
+            const amount = document.getElementById('amount').value || 50;
+            const upiUri = `upi://pay?pa=${MY_UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${amount}&cu=INR&tn=${encodeURIComponent("YouS2 Seba Contribution")}`;
+            document.getElementById('upiDeepLink').href = upiUri;
+            document.getElementById('dynamicQr').src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(upiUri)}`;
+        }
+
+        let lastDonorData = {};
 
         function handleSubmission(event) {
             event.preventDefault();
-            
-            const name = document.getElementById('fullName').value;
-            const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value;
-            const amount = document.getElementById('amount').value;
-
-            if (currentMethod === 'upi') {
-                const utr = document.getElementById('utrNumber').value.trim();
-                saveToGoogleSheet({
-                    name: name,
-                    phone: phone,
-                    email: email,
-                    amount: amount,
-                    paymentId: "UPI-UTR: " + utr
-                });
-            } else {
-                var options = {
-                    "key": RAZORPAY_KEY_ID, 
-                    "amount": amount * 100, 
-                    "currency": "INR",
-                    "name": "YouS2 Seba Mission",
-                    "description": "Monthly Welfare Contribution",
-                    "handler": function (response){
-                        saveToGoogleSheet({
-                            name: name,
-                            phone: phone,
-                            email: email,
-                            amount: amount,
-                            paymentId: response.razorpay_payment_id
-                        });
-                    },
-                    "prefill": {
-                        "name": name,
-                        "email": email,
-                        "contact": phone
-                    },
-                    "theme": {
-                        "color": "#e11d48"
-                    }
-                };
-                var rzp1 = new Razorpay(options);
-                rzp1.open();
-            }
+            lastDonorData = {
+                type: "donation",
+                name: document.getElementById('fullName').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                amount: document.getElementById('amount').value,
+                paymentId: "UPI-UTR: " + document.getElementById('utrNumber').value.trim()
+            };
+            saveToGoogleSheet(lastDonorData);
         }
 
         function saveToGoogleSheet(data) {
             const btnText = document.getElementById('btnText');
-            const originalText = btnText.innerText;
-            btnText.innerText = "Generating Receipt & Saving...";
+            btnText.innerText = "Processing Certificate...";
 
             fetch(GOOGLE_SCRIPT_URL, {
                 method: "POST",
                 mode: "no-cors",
-                headers: {
-                    "Content-Type": "application/json"
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data)
             }).then(() => {
-                btnText.innerText = originalText;
+                btnText.innerText = "Submit & Download Certificate";
                 document.getElementById('paymentForm').reset();
                 updateUpiLinks();
                 
-                // Show Instant On-Screen Receipt
                 document.getElementById('recName').innerText = data.name;
                 document.getElementById('recAmount').innerText = "₹" + data.amount;
-                document.getElementById('recRef').innerText = data.paymentId;
                 document.getElementById('recDate').innerText = new Date().toLocaleDateString("en-IN");
                 document.getElementById('receiptCard').classList.remove('hidden');
-                
-                // Add to Live Donor Wall
-                const donorWall = document.getElementById('donorWall');
-                const newDonorHTML = `
-                    <div class="flex items-center justify-between p-3 bg-emerald-50 border border-emerald-100 rounded-xl">
-                        <div>
-                            <p class="font-semibold text-slate-800">${data.name}</p>
-                            <p class="text-xs text-emerald-600">Just Now • Verified Donor</p>
-                        </div>
-                        <span class="font-bold text-emerald-700 bg-white px-2.5 py-1 rounded-lg text-xs">₹${data.amount} Paid</span>
-                    </div>
-                `;
-                donorWall.insertAdjacentHTML('afterbegin', newDonorHTML);
             }).catch(error => {
-                btnText.innerText = originalText;
-                alert("Error saving to sheet: " + error);
+                btnText.innerText = "Submit & Download Certificate";
+                alert("Error: " + error);
+            });
+        }
+
+        function downloadCertificate() {
+            const canvas = document.getElementById('certCanvas');
+            const ctx = canvas.getContext('2d');
+
+            ctx.fillStyle = "#fffbfb";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.strokeStyle = "#9f1239";
+            ctx.lineWidth = 12;
+            ctx.strokeRect(15, 15, canvas.width - 30, canvas.height - 30);
+
+            ctx.strokeStyle = "#f43f5e";
+            ctx.lineWidth = 2;
+            ctx.strokeRect(28, 28, canvas.width - 56, canvas.height - 56);
+
+            ctx.fillStyle = "#0f172a";
+            ctx.font = "bold 26px Inter";
+            ctx.textAlign = "center";
+            ctx.fillText("YOUS2 SEBA MISSION", canvas.width / 2, 85);
+
+            ctx.font = "14px Inter";
+            ctx.fillStyle = "#64748b";
+            ctx.fillText("Baguiati, Kolkata - 700159 • Transparent Community Welfare", canvas.width / 2, 110);
+
+            ctx.font = "bold 34px Inter";
+            ctx.fillStyle = "#9f1239";
+            ctx.fillText("CERTIFICATE OF APPRECIATION", canvas.width / 2, 180);
+
+            ctx.font = "italic 16px Inter";
+            ctx.fillStyle = "#475569";
+            ctx.fillText("This certificate is proudly awarded to", canvas.width / 2, 225);
+
+            ctx.font = "bold 38px Inter";
+            ctx.fillStyle = "#0f172a";
+            ctx.fillText(lastDonorData.name || "Valued Supporter", canvas.width / 2, 290);
+
+            ctx.font = "16px Inter";
+            ctx.fillStyle = "#334155";
+            ctx.fillText("For your noble and compassionate contribution of ₹" + (lastDonorData.amount || "50") + " towards", canvas.width / 2, 350);
+            ctx.fillText("emergency medical aid, medicines, and poverty relief for underprivileged people.", canvas.width / 2, 380);
+
+            ctx.beginPath();
+            ctx.arc(canvas.width / 2, 455, 30, 0, 2 * Math.PI);
+            ctx.fillStyle = "#10b981";
+            ctx.fill();
+            ctx.fillStyle = "#ffffff";
+            ctx.font = "bold 14px Inter";
+            ctx.fillText("VERIFIED", canvas.width / 2, 460);
+
+            ctx.font = "bold 16px Inter";
+            ctx.fillStyle = "#0f172a";
+            ctx.fillText("Subrata Mazumdar", 200, 540);
+            ctx.fillText("YouS2 Seba Mission", canvas.width - 200, 540);
+
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = "#cbd5e1";
+            ctx.beginPath();
+            ctx.moveTo(100, 515); ctx.lineTo(300, 515);
+            ctx.moveTo(canvas.width - 300, 515); ctx.lineTo(canvas.width - 100, 515);
+            ctx.stroke();
+
+            ctx.font = "13px Inter";
+            ctx.fillStyle = "#64748b";
+            ctx.fillText("Founder & Organizer", 200, 562);
+            ctx.fillText("Official Authorized Signature", canvas.width - 200, 562);
+
+            const link = document.createElement('a');
+            link.download = `YouS2-Certificate-${lastDonorData.name || 'Donor'}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        function submitHelpRequest(event) {
+            event.preventDefault();
+            const btn = document.getElementById('helpSubmitBtn');
+            btn.innerText = "Submitting...";
+
+            const helpData = {
+                type: "help_request",
+                name: document.getElementById('helpName').value,
+                phone: document.getElementById('helpPhone').value,
+                location: document.getElementById('helpLocation').value,
+                category: document.getElementById('helpCategory').value,
+                details: document.getElementById('helpDetails').value
+            };
+
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: "POST",
+                mode: "no-cors",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(helpData)
+            }).then(() => {
+                btn.innerText = "Submit Help Application";
+                document.getElementById('helpForm').reset();
+                
+                const waText = `Namaskar Subrata, Help requested by ${helpData.name} from ${helpData.location}. Need: ${helpData.category}. Details: ${helpData.details}`;
+                document.getElementById('helpWhatsappLink').href = `https://wa.me/918509788421?text=${encodeURIComponent(waText)}`;
+                document.getElementById('helpSuccessMsg').classList.remove('hidden');
+            }).catch(error => {
+                btn.innerText = "Submit Help Application";
+                alert("Error: " + error);
             });
         }
     </script>
