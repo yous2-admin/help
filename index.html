@@ -71,7 +71,7 @@
                 <div class="pt-6 md:pt-0">
                     <span class="text-xs font-semibold uppercase tracking-wider text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full">100% Direct Aid</span>
                     <h3 class="text-3xl font-bold text-slate-900 mt-3">Verified</h3>
-                    <p class="text-slate-500 text-sm mt-1">Every Rupee Accounted For</p>
+                    <p class="text-slate-500 text-sm mt-1">Instant Email Receipt</p>
                 </div>
             </div>
         </div>
@@ -87,12 +87,12 @@
                     <h2 class="text-2xl font-bold text-slate-900">Donor Details & Payment</h2>
                     <span class="text-xs bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-md font-semibold">🔒 SSL Secured</span>
                 </div>
-                <p class="text-slate-500 text-sm mb-6">Fill in your details and choose your preferred payment method below.</p>
+                <p class="text-slate-500 text-sm mb-6">Fill in your details to receive an instant official receipt on your email.</p>
                 
                 <!-- Payment Method Selector Tabs -->
                 <div class="grid grid-cols-2 gap-2 p-1 bg-slate-100 rounded-xl mb-6">
                     <button type="button" id="tabUpi" onclick="switchMethod('upi')" class="py-2.5 text-xs sm:text-sm font-bold rounded-lg bg-white text-rose-600 shadow-sm transition">
-                        📱 Direct UPI QR (0% Fee)
+                        📱 Direct UPI / App (0% Fee)
                     </button>
                     <button type="button" id="tabRazorpay" onclick="switchMethod('razorpay')" class="py-2.5 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition">
                         💳 Razorpay Gateway
@@ -110,25 +110,31 @@
                             <input type="tel" id="phone" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-rose-600 text-sm" placeholder="10-digit mobile number">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Email Address (For Receipt)</label>
                             <input type="email" id="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-rose-600 text-sm" placeholder="Enter email address">
                         </div>
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-slate-700 mb-1">Contribution Amount (₹)</label>
-                        <input type="number" id="amount" value="30" min="30" oninput="updateQrCode()" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-rose-600 text-sm bg-slate-50 font-semibold text-rose-600">
-                        <span class="text-xs text-slate-400 mt-1 block">Minimum ₹30/month. QR code automatically updates with amount.</span>
+                        <input type="number" id="amount" value="30" min="30" oninput="updateUpiLinks()" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-rose-600 text-sm bg-slate-50 font-semibold text-rose-600">
+                        <span class="text-xs text-slate-400 mt-1 block">Minimum ₹30/month. QR & App button automatically update with amount.</span>
                     </div>
 
-                    <!-- Direct UPI QR Box (Visible by Default) -->
+                    <!-- Direct UPI App & QR Box (Visible by Default) -->
                     <div id="upiSection" class="bg-slate-50 border border-slate-200 rounded-2xl p-5 text-center space-y-4">
-                        <div class="inline-block bg-emerald-100 text-emerald-800 text-xs font-semibold px-3 py-1 rounded-full">
-                            ✨ Scan with GPay, PhonePe, Paytm or any UPI App
-                        </div>
                         
+                        <!-- 1-Click Mobile UPI App Deep Link Button -->
+                        <div class="space-y-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 block">Step 1: Pay via UPI App or Scan QR</span>
+                            <a id="upiDeepLink" href="#" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-md shadow-emerald-600/20 transition flex items-center justify-center space-x-2 text-sm">
+                                <span>🚀 Open GPay / PhonePe / Paytm App</span>
+                            </a>
+                            <span class="text-[11px] text-slate-400 block">Works directly on mobile phones • Or scan QR below</span>
+                        </div>
+
                         <!-- Auto Generated Dynamic UPI QR Code -->
                         <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-200 inline-block">
-                            <img id="dynamicQr" src="" alt="Scan UPI QR Code" class="w-44 h-44 mx-auto rounded-lg">
+                            <img id="dynamicQr" src="" alt="Scan UPI QR Code" class="w-40 h-40 mx-auto rounded-lg">
                         </div>
 
                         <!-- Copy UPI ID Option -->
@@ -141,10 +147,10 @@
                         <p id="copyToast" class="text-xs text-emerald-600 font-medium hidden">✅ UPI ID Copied!</p>
 
                         <!-- UTR / Transaction ID Input -->
-                        <div class="text-left pt-2">
-                            <label class="block text-xs font-semibold text-slate-700 mb-1">Enter 12-Digit UPI Ref / UTR Number (After Payment) *</label>
+                        <div class="text-left pt-3 border-t border-slate-200">
+                            <label class="block text-xs font-bold text-slate-800 mb-1">Step 2: Enter 12-Digit UPI Ref / UTR Number *</label>
                             <input type="text" id="utrNumber" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-rose-600 text-sm bg-white" placeholder="e.g. 429812345678">
-                            <span class="text-[11px] text-slate-400 mt-1 block">Pay korar por app theke 12-digit UTR ba Transaction ID-ti ekhane likhe submit korun.</span>
+                            <span class="text-[11px] text-slate-500 mt-1 block">Pay করার পর পেমেন্ট অ্যাপ থেকে 12-digit UTR / Ref ID এখানে লিখে নিচে Submit করুন।</span>
                         </div>
                     </div>
 
@@ -157,21 +163,37 @@
                     </div>
 
                     <button type="submit" id="submitBtn" class="w-full bg-rose-600 hover:bg-rose-700 text-white font-semibold py-4 rounded-xl shadow-lg shadow-rose-600/20 transition duration-200 mt-2 flex items-center justify-center space-x-2">
-                        <span id="btnText">Submit UPI Payment Details</span>
+                        <span id="btnText">Submit & Get Instant Receipt</span>
                     </button>
 
                     <!-- Trust Badges under button -->
                     <div class="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-center gap-4 text-xs text-slate-400">
-                        <span>✅ 100% Secure</span>
+                        <span>✅ Instant Email Receipt</span>
                         <span>•</span>
                         <span>✅ UPI / GPay / PhonePe</span>
                         <span>•</span>
-                        <span>✅ Instant Google Sheet Sync</span>
+                        <span>✅ Live Sheet Sync</span>
                     </div>
                 </form>
 
-                <div id="successMsg" class="hidden mt-6 p-4 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-xl text-center text-sm font-medium">
-                    🎉 Thank you! Your contribution details have been saved in our official ledger sheet.
+                <!-- Instant On-Screen Receipt Card (Hidden until payment) -->
+                <div id="receiptCard" class="hidden mt-6 bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-6 text-left space-y-3">
+                    <div class="flex items-center justify-between border-b border-emerald-200 pb-3">
+                        <div>
+                            <span class="text-xs font-bold uppercase text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-full">✅ Payment Recorded</span>
+                            <h3 class="text-lg font-bold text-slate-900 mt-1">Official Contribution Receipt</h3>
+                        </div>
+                        <span class="text-2xl">🎉</span>
+                    </div>
+                    <div class="text-xs sm:text-sm text-slate-700 space-y-1.5">
+                        <p><strong>Donor Name:</strong> <span id="recName"></span></p>
+                        <p><strong>Amount Paid:</strong> <span class="text-emerald-700 font-bold" id="recAmount"></span></p>
+                        <p><strong>Reference ID:</strong> <span class="font-mono" id="recRef"></span></p>
+                        <p><strong>Date:</strong> <span id="recDate"></span></p>
+                    </div>
+                    <p class="text-xs text-emerald-800 pt-2 border-t border-emerald-200/60 font-medium">
+                        📩 A copy of this receipt has also been sent to your email address!
+                    </p>
                 </div>
             </div>
 
@@ -192,7 +214,7 @@
                         </li>
                         <li class="flex items-start space-x-2">
                             <span class="text-rose-400 font-bold">✓</span>
-                            <span><strong>Direct Impact:</strong> No middlemen. Funds go directly to help patients and the poor.</span>
+                            <span><strong>Automated Receipt:</strong> Instant email receipt and live Google Sheet entry for every donor.</span>
                         </li>
                     </ul>
                 </div>
@@ -348,24 +370,23 @@
         </div>
     </footer>
 
-    <!-- JavaScript for UPI QR, Razorpay & Google Sheet Sync -->
+    <!-- JavaScript for UPI Deep Link, QR, Razorpay & Google Sheet Sync -->
     <script>
         // 1. Apnar Google Apps Script Web App URL set kora ache
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz3J_U0Vj-IKuYalgj0BPTpgBpfjzhYsPA_WjZPeRNn4DRORCOrmi9q5lDJD-IC0zc/exec";
 
-        // 2. Apnar nijer UPI ID ekhane bosaben (Dynamic QR code auto toiri hobe)
+        // 2. Apnar nijer UPI ID ekhane bosaben
         const MY_UPI_ID = "8509788421@okbizaxis"; 
         const MERCHANT_NAME = "YouS2 Seba Mission";
 
         // 3. Apnar Razorpay Key ID (jodi Razorpay tab use koren)
         const RAZORPAY_KEY_ID = "YOUR_RAZORPAY_KEY_ID";
 
-        let currentMethod = 'upi'; // Default method
+        let currentMethod = 'upi';
 
-        // Website load hole QR code generate hobe ebong Google Sheet theke live data anbe
         window.addEventListener('DOMContentLoaded', () => {
             document.getElementById('upiIdDisplay').innerText = MY_UPI_ID;
-            updateQrCode();
+            updateUpiLinks();
 
             fetch(GOOGLE_SCRIPT_URL)
                 .then(res => res.json())
@@ -391,15 +412,19 @@
                 }).catch(err => console.log("Live sync waiting for data."));
         });
 
-        // Amount change korle automatic sei takar UPI QR Code generate hobe
-        function updateQrCode() {
+        // Amount change korle automatic UPI App Button Link ebong QR Code update hobe
+        function updateUpiLinks() {
             const amount = document.getElementById('amount').value || 30;
-            const upiString = `upi://pay?pa=${MY_UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${amount}&cu=INR`;
-            const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(upiString)}`;
+            const upiUri = `upi://pay?pa=${MY_UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${amount}&cu=INR&tn=${encodeURIComponent("YouS2 Seba Contribution")}`;
+            
+            // Update Mobile Deep Link Button
+            document.getElementById('upiDeepLink').href = upiUri;
+            
+            // Update QR Code Image
+            const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(upiUri)}`;
             document.getElementById('dynamicQr').src = qrApiUrl;
         }
 
-        // Tab Switcher (Direct UPI vs Razorpay)
         function switchMethod(method) {
             currentMethod = method;
             const upiSection = document.getElementById('upiSection');
@@ -413,7 +438,7 @@
                 utrInput.required = true;
                 tabUpi.className = "py-2.5 text-xs sm:text-sm font-bold rounded-lg bg-white text-rose-600 shadow-sm transition";
                 tabRazorpay.className = "py-2.5 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition";
-                btnText.innerText = "Submit UPI Payment Details";
+                btnText.innerText = "Submit & Get Instant Receipt";
             } else {
                 upiSection.classList.add('hidden');
                 utrInput.required = false;
@@ -480,7 +505,7 @@
         function saveToGoogleSheet(data) {
             const btnText = document.getElementById('btnText');
             const originalText = btnText.innerText;
-            btnText.innerText = "Saving Record...";
+            btnText.innerText = "Generating Receipt & Saving...";
 
             fetch(GOOGLE_SCRIPT_URL, {
                 method: "POST",
@@ -492,9 +517,16 @@
             }).then(() => {
                 btnText.innerText = originalText;
                 document.getElementById('paymentForm').reset();
-                updateQrCode();
-                document.getElementById('successMsg').classList.remove('hidden');
+                updateUpiLinks();
                 
+                // Show Instant On-Screen Receipt
+                document.getElementById('recName').innerText = data.name;
+                document.getElementById('recAmount').innerText = "₹" + data.amount;
+                document.getElementById('recRef').innerText = data.paymentId;
+                document.getElementById('recDate').innerText = new Date().toLocaleDateString("en-IN");
+                document.getElementById('receiptCard').classList.remove('hidden');
+                
+                // Add to Live Donor Wall
                 const donorWall = document.getElementById('donorWall');
                 const newDonorHTML = `
                     <div class="flex items-center justify-between p-3 bg-emerald-50 border border-emerald-100 rounded-xl">
