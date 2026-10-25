@@ -154,7 +154,7 @@
                         </li>
                         <li class="flex items-start space-x-2">
                             <span class="text-rose-400 font-bold">✓</span>
-                            <span><strong>Direct Impact:</strong> No middlemen. Funds go directly to ayudar patients and the poor.</span>
+                            <span><strong>Direct Impact:</strong> No middlemen. Funds go directly to help patients and the poor.</span>
                         </li>
                     </ul>
                 </div>
@@ -259,7 +259,6 @@
                         <p class="text-xs text-slate-500 leading-relaxed">
                             Feel free to reach out to us directly on WhatsApp or visit our Baguiati office if you want to know about ongoing medical cases or join our volunteer group.
                         </p>
-                        <!-- Replace 918509788421 with your actual WhatsApp number -->
                         <a href="https://wa.me/918509788421?text=Hi%20Subrata,%20I%20want%20to%20know%20more%20about%20YouS2%2030%20Taka%20Seba%20Mission" target="_blank" class="block w-full bg-emerald-600 hover:bg-emerald-700 text-white text-center font-semibold py-3 rounded-xl text-sm transition duration-200">
                             💬 Chat on WhatsApp
                         </a>
@@ -316,8 +315,34 @@
 
     <!-- JavaScript for Razorpay & Google Sheet Sync -->
     <script>
-        // 1. Apnar Google Apps Script Web App URL ekhane din
-        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbymp_oqs2gmjGv5pzniLqDYnLBBZRxlYUY4evRPOQ/dev";
+        // 1. Apnar Google Apps Script Web App URL set kora ache
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz3J_U0Vj-IKuYalgj0BPTpgBpfjzhYsPA_WjZPeRNn4DRORCOrmi9q5lDJD-IC0zc/exec";
+
+        // Website load holei Google Sheet theke live data anbe (Eta baire thakbe)
+        window.addEventListener('DOMContentLoaded', () => {
+            fetch(GOOGLE_SCRIPT_URL)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.totalDonors > 0) {
+                        document.getElementById('donorCount').innerText = data.totalDonors + "+";
+                        document.getElementById('fundCount').innerText = "₹" + data.totalFund;
+                        
+                        const donorWall = document.getElementById('donorWall');
+                        donorWall.innerHTML = "";
+                        data.recentDonors.forEach(d => {
+                            donorWall.innerHTML += `
+                                <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl">
+                                    <div>
+                                        <p class="font-semibold text-slate-800">${d.name}</p>
+                                        <p class="text-xs text-slate-400">Verified Donor</p>
+                                    </div>
+                                    <span class="font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg text-xs">₹${d.amount} Paid</span>
+                                </div>
+                            `;
+                        });
+                    }
+                }).catch(err => console.log("Live sync waiting for data."));
+        });
 
         function startPayment(event) {
             event.preventDefault();
@@ -369,7 +394,7 @@
                 document.getElementById('paymentForm').reset();
                 document.getElementById('successMsg').classList.remove('hidden');
                 
-                // Live Donor Wall-e sathe sathe nam দেখানোর jonno
+                // Live Donor Wall-e sathe sathe nam dekhanor jonno
                 const donorWall = document.getElementById('donorWall');
                 const newDonorHTML = `
                     <div class="flex items-center justify-between p-3 bg-emerald-50 border border-emerald-100 rounded-xl">
