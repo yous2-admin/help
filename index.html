@@ -21,18 +21,18 @@
                 <span class="text-xs bg-rose-100 text-rose-700 px-2.5 py-0.5 rounded-full font-semibold" data-en="Seba Mission" data-bn="সেবা মিশন">Seba Mission</span>
             </div>
             <div class="flex items-center space-x-3 sm:space-x-5">
-                <a href="#upcoming" class="hidden md:inline text-xs text-rose-600 font-semibold bg-rose-50 px-3 py-1.5 rounded-lg">Upcoming Mission</a>
-                <a href="#gallery" class="hidden md:inline text-xs text-slate-600 hover:text-rose-600 font-medium">Gallery</a>
-                <a href="#contact" class="hidden sm:inline text-xs text-slate-600 hover:text-rose-600 font-medium">Contact Us</a>
-                <a href="#apply-help" class="text-xs text-blue-600 hover:text-blue-700 font-semibold bg-blue-50 px-3 py-1.5 rounded-lg">Need Help?</a>
+                <a href="#upcoming" class="hidden md:inline text-xs text-rose-600 font-semibold bg-rose-50 px-3 py-1.5 rounded-lg" data-en="Upcoming Mission" data-bn="আসন্ন মিশন">Upcoming Mission</a>
+                <a href="#gallery" class="hidden md:inline text-xs text-slate-600 hover:text-rose-600 font-medium" data-en="Photo Gallery" data-bn="গ্যালারি">Gallery</a>
+                <a href="#contact" class="hidden sm:inline text-xs text-slate-600 hover:text-rose-600 font-medium" data-en="Contact Us" data-bn="যোগাযোগ">Contact Us</a>
+                <a href="#apply-help" class="text-xs text-blue-600 hover:text-blue-700 font-semibold bg-blue-50 px-3 py-1.5 rounded-lg" data-en="Need Help?" data-bn="সাহায্য চান?">Need Help?</a>
     
-    <!-- Language Switcher Button -->
+                <!-- Language Switcher Button -->
                 <button onclick="toggleLanguage()" id="langBtn" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-lg transition">
-        বাংলা
+                    বাংলা
                 </button>
 
-                <a href="#donate-form" class="bg-rose-600 hover:bg-rose-700 text-white px-4 py-2 rounded-xl text-sm font-medium transition duration-200 shadow-sm">
-        Contribute
+                <a href="#donate-form" class="bg-rose-600 hover:bg-rose-700 text-white px-4 py-2 rounded-xl text-sm font-medium transition duration-200 shadow-sm" data-en="Contribute" data-bn="সহযোগিতা করুন">
+                    Contribute
                 </a>
             </div>
         </div>
@@ -59,16 +59,33 @@
         </div>
     </section>
 
+    <!-- Live Impact Counter -->
+    <section class="max-w-5xl mx-auto px-4 pb-12">
+        <div class="bg-white rounded-3xl shadow-sm border border-slate-200/80 p-6 md:p-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-slate-100">
+                <div class="pt-2 md:pt-0">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-rose-600 bg-rose-50 px-2.5 py-1 rounded-full" data-en="Total Pool" data-bn="মোট ফান্ড">Total Pool</span>
+                    <h3 class="text-3xl font-bold text-rose-600 mt-3" id="fundCount">₹360+</h3>
+                    <p class="text-slate-500 text-sm mt-1" data-en="Total Fund Collected" data-bn="মোট সংগৃহীত ফান্ড">Total Fund Collected</p>
+                </div>
+                <div class="pt-6 md:pt-0">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full" data-en="100% Direct Aid" data-bn="১০০% সরাসরি সেবা">100% Direct Aid</span>
+                    <h3 class="text-3xl font-bold text-slate-900 mt-3" data-en="Verified" data-bn="যাচাইকৃত">Verified</h3>
+                    <p class="text-slate-500 text-sm mt-1" data-en="Instant Certificate" data-bn="তক্ষণাৎ সার্টিফিকেট">Instant Certificate</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- NEW SECTION: UPCOMING MISSION (Next Mission / Diwali Winter Dress Distribution) -->
+    <!-- UPCOMING MISSION SECTION -->
     <section id="upcoming" class="py-16 bg-rose-50/50 border-t border-rose-100">
         <div class="max-w-4xl mx-auto px-4">
             <div class="bg-white rounded-3xl shadow-lg border border-rose-100 p-8 md:p-10">
                 <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                     <div class="space-y-3 text-center md:text-left">
-                        <span class="bg-rose-100 text-rose-700 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full" data-en="🔥 Next Big Project" data-bn="🔥 আমাদের পরবর্তী বড় উদ্যোগ">🔥 Next Big Project</span>
-                        <h2 class="text-2xl md:text-3xl font-bold text-slate-900" data-en="Diwali & Winter Dress Distribution for Street Children" data-bn="দাওয়ালি ও শীতের পোশাক বিতরণ (পথশিশুদের জন্য)">Diwali & Winter Dress Distribution for Street Children</h2>
-                        <p class="text-slate-600 text-sm leading-relaxed" data-en="This festive season, our mission is to bring warmth and smiles to underprivileged street children by distributing warm winter clothes and festive gifts. Your small contribution can make their Diwali special." data-bn="আসন্ন উৎসবে পথশিশু ও গরিব শিশুদের মুখে হাসি ফোটাতে আমরা শীতের পোশাক ও উপহার বিতরণের পরিকল্পনা নিয়েছি। আপনার সামান্য সহযোগিতায় তাদের এই দিনটি আনন্দদায়ক হয়ে উঠতে পারে।">
+                        <span class="bg-rose-100 text-rose-700 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full" data-en="🔥 Next Big Project" data-bn="🔥 আমাদের পরবর্তী বড় উদ্যোগ">🔥 Next Big Project</span>
+                        <h2 class="text-2xl md:text-3xl font-bold text-slate-900" data-en="Diwali & Winter Dress Distribution for Street Children" data-bn="দাওয়ালি ও শীতের পোশাক বিতরণ (পথশিশুদের জন্য)">Diwali & Winter Dress Distribution for Street Children</h2>
+                        <p class="text-slate-600 text-sm leading-relaxed" data-en="This festive season, our mission is to bring warmth and smiles to underprivileged street children by distributing warm winter clothes and festive gifts. Your small contribution can make their Diwali special." data-bn="আসন্ন উৎসবে পথশিশু ও গরিব শিশুদের মুখে হাসি ফোটাতে আমরা শীতের পোশাক ও উপহার বিতরণের পরিকল্পনা নিয়েছি। আপনার সামান্য সহযোগিতায় তাদের এই দিনটি আনন্দদায়ক হয়ে উঠতে পারে।">
                             This festive season, our mission is to bring warmth and smiles to underprivileged street children by distributing warm winter clothes and festive gifts. Your small contribution can make their Diwali special.
                         </p>
                         <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 text-xs font-semibold text-slate-500 pt-2">
@@ -114,7 +131,7 @@
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-slate-700 mb-1" data-en="Enter Amount You Wish to Give (₹)" data-bn="আপনি কত টাকা দিতে চান তা লিখুন (₹)">Enter Amount You Wish to Give (₹)</label>
-                    <input type="number" id="amount" value="" min="50" oninput="updateUpiLinks()" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-rose-600 text-sm bg-slate-50 font-semibold text-rose-600" placeholder="Enter amount">
+                    <input type="number" id="amount" value="" min="1" oninput="updateUpiLinks()" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-rose-600 text-sm bg-slate-50 font-semibold text-rose-600" placeholder="Enter amount">
                 </div>
 
                 <!-- Direct UPI App & QR Box -->
@@ -236,11 +253,10 @@
             </div>
         </div>
     </section>
-<!-- Privacy Policy & Terms Modal / Section -->
+
+    <!-- Privacy Policy & Terms Section -->
     <section id="legal-policies" class="py-12 bg-white border-t border-slate-200 text-slate-700 text-sm">
         <div class="max-w-4xl mx-auto px-4 space-y-8">
-            
-            <!-- Terms & Conditions -->
             <div>
                 <h3 class="text-xl font-bold text-slate-900 mb-3">Terms & Conditions</h3>
                 <p class="text-slate-600 leading-relaxed mb-2">
@@ -253,7 +269,6 @@
                 </ul>
             </div>
 
-            <!-- Privacy Policy -->
             <div>
                 <h3 class="text-xl font-bold text-slate-900 mb-3">Privacy Policy</h3>
                 <p class="text-slate-600 leading-relaxed mb-2">
@@ -265,9 +280,9 @@
                     <li><strong>Contact:</strong> For any privacy concerns, you can reach out directly to Subrata Mazumdar at our Baguiati office or via WhatsApp.</li>
                 </ul>
             </div>
-
         </div>
     </section>
+
     <!-- Contact Us Section -->
     <section id="contact" class="py-16 bg-slate-100 border-t border-slate-200">
         <div class="max-w-4xl mx-auto px-4">
@@ -278,7 +293,6 @@
             </div>
 
             <div class="grid md:grid-cols-2 gap-6">
-                <!-- Office Address Card -->
                 <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200/80 space-y-4">
                     <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center text-xl font-bold">📍</div>
                     <h3 class="font-bold text-slate-900 text-lg">Our Office Location</h3>
@@ -290,7 +304,6 @@
                     <p class="text-xs text-rose-600 font-semibold pt-2">🕒 Visitors are always welcome!</p>
                 </div>
 
-                <!-- Direct WhatsApp & Organizer Card -->
                 <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200/80 space-y-4">
                     <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-xl font-bold">💬</div>
                     <h3 class="font-bold text-slate-900 text-lg">Quick Support</h3>
@@ -298,22 +311,23 @@
                         <p><strong>👤 Organizer:</strong> Subrata Mazumdar</p>
                         <p><strong>📞 Phone / WhatsApp:</strong> +91 8509788421</p>
                     </div>
-                    <a href="https://wa.me/918509788421?text=Hi%20Subrata,%20I%20want%20to%20know%20more%20about%20YouS2%20Seba%20Mission" target="_blank" class="block w-full bg-emerald-600 hover:bg-emerald-700 text-white text-center font-semibold py-3 rounded-xl text-sm transition shadow-sm">
+                    <a href="https://wa.me/919635578790?text=Hi%20Subrata,%20I%20want%20to%20know%20more%20about%20YouS2%20Seba%20Mission" target="_blank" class="block w-full bg-emerald-600 hover:bg-emerald-700 text-white text-center font-semibold py-3 rounded-xl text-sm transition shadow-sm">
                         📲 Chat on WhatsApp Now
                     </a>
                 </div>
             </div>
         </div>
     </section>
+
     <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-12 text-center text-sm">
-        <div class="max-w-4xl mx-auto px-4 space-y-3">
+    <footer class="bg-slate-900 text-slate-400 py-12 text-center text-sm space-y-3">
+        <div class="max-w-4xl mx-auto px-4 space-y-1">
             <p class="font-bold text-white text-base">YouS2 Seba Mission</p>
             <p class="text-xs text-slate-400">An initiative by Subrata Mazumdar • Lokenath Market, Jagatpur, Aswini Nagar, Baguiati, Kolkata - 700159</p>
             <p class="text-xs">&copy; 2026 YouS2 (yous2.in). All rights reserved.</p>
         </div>
-        <div class="space-x-4">
-            <a href="#about" class="hover:text-white">Contact Us</a>
+        <div class="space-x-4 pt-2">
+            <a href="#contact" class="hover:text-white">Contact Us</a>
             <a href="#legal-policies" class="hover:text-white">Privacy & Terms</a>
         </div>
     </footer>
@@ -503,13 +517,13 @@
                 method: "POST",
                 mode: "no-cors",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data)
+                body: JSON.stringify(helpData)
             }).then(() => {
                 btn.innerText = "Submit Help Application";
                 document.getElementById('helpForm').reset();
                 
                 const waText = `Namaskar Subrata, Help requested by ${helpData.name} from ${helpData.location}. Need: ${helpData.category}. Details: ${helpData.details}`;
-                document.getElementById('helpWhatsappLink').href = `https://wa.me/918509788421?text=${encodeURIComponent(waText)}`;
+                document.getElementById('helpWhatsappLink').href = `https://wa.me/919635578790?text=${encodeURIComponent(waText)}`;
                 document.getElementById('helpSuccessMsg').classList.remove('hidden');
             }).catch(error => {
                 btn.innerText = "Submit Help Application";
