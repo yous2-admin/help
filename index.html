@@ -21,17 +21,18 @@
                 <span class="text-xs bg-rose-100 text-rose-700 px-2.5 py-0.5 rounded-full font-semibold" data-en="Seba Mission" data-bn="সেবা মিশন">Seba Mission</span>
             </div>
             <div class="flex items-center space-x-3 sm:space-x-5">
-                <a href="#upcoming" class="hidden md:inline text-xs text-rose-600 font-semibold bg-rose-50 px-3 py-1.5 rounded-lg" data-en="Upcoming Mission" data-bn="আসন্ন মিশন">Upcoming Mission</a>
-                <a href="#gallery" class="hidden md:inline text-xs text-slate-600 hover:text-rose-600 font-medium" data-en="Photo Gallery" data-bn="গ্যালারি">Gallery</a>
-                <a href="#apply-help" class="text-xs text-blue-600 hover:text-blue-700 font-semibold bg-blue-50 px-3 py-1.5 rounded-lg" data-en="Need Help?" data-bn="সাহায্য চান?">Need Help?</a>
-                
-                <!-- Language Switcher Button -->
+                <a href="#upcoming" class="hidden md:inline text-xs text-rose-600 font-semibold bg-rose-50 px-3 py-1.5 rounded-lg">Upcoming Mission</a>
+                <a href="#gallery" class="hidden md:inline text-xs text-slate-600 hover:text-rose-600 font-medium">Gallery</a>
+                <a href="#contact" class="hidden sm:inline text-xs text-slate-600 hover:text-rose-600 font-medium">Contact Us</a>
+                <a href="#apply-help" class="text-xs text-blue-600 hover:text-blue-700 font-semibold bg-blue-50 px-3 py-1.5 rounded-lg">Need Help?</a>
+    
+    <!-- Language Switcher Button -->
                 <button onclick="toggleLanguage()" id="langBtn" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-lg transition">
-                    বাংলা
+        বাংলা
                 </button>
 
-                <a href="#donate-form" class="bg-rose-600 hover:bg-rose-700 text-white px-4 py-2 rounded-xl text-sm font-medium transition duration-200 shadow-sm" data-en="Contribute" data-bn="সহযোগিতা করুন">
-                    Contribute
+                <a href="#donate-form" class="bg-rose-600 hover:bg-rose-700 text-white px-4 py-2 rounded-xl text-sm font-medium transition duration-200 shadow-sm">
+        Contribute
                 </a>
             </div>
         </div>
@@ -235,13 +236,85 @@
             </div>
         </div>
     </section>
+<!-- Privacy Policy & Terms Modal / Section -->
+    <section id="legal-policies" class="py-12 bg-white border-t border-slate-200 text-slate-700 text-sm">
+        <div class="max-w-4xl mx-auto px-4 space-y-8">
+            
+            <!-- Terms & Conditions -->
+            <div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">Terms & Conditions</h3>
+                <p class="text-slate-600 leading-relaxed mb-2">
+                    Welcome to <strong>YouS2 Seba Mission</strong> (yous2.in). By accessing our website and contributing to our community welfare initiatives, you agree to comply with and be bound by the following terms and conditions:
+                </p>
+                <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                    <li><strong>Voluntary Contribution:</strong> All contributions made through our platform are completely voluntary micro-contributions intended for medical aid, food distribution, and poverty relief.</li>
+                    <li><strong>Non-Refundable Policy:</strong> Since funds are pooled and immediately deployed toward emergency social relief and medical purchases, contributions once made are strictly non-refundable under any circumstances.</li>
+                    <li><strong>Transparent Fund Allocation:</strong> Management holds the authority to allocate funds based on the urgency of medical and humanitarian cases.</li>
+                </ul>
+            </div>
 
+            <!-- Privacy Policy -->
+            <div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">Privacy Policy</h3>
+                <p class="text-slate-600 leading-relaxed mb-2">
+                    At YouS2 Seba Mission, we respect your privacy and protect your personal data. This policy outlines how we collect and manage your information:
+                </p>
+                <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                    <li><strong>Data Collection:</strong> We collect your Name, Phone Number, and Email Address solely for issuing digital certificates, payment receipts, and maintaining transparency ledgers.</li>
+                    <li><strong>Data Security:</strong> Your data is stored securely in encrypted Google Sheets and is never sold, traded, or rented to third-party commercial entities.</li>
+                    <li><strong>Contact:</strong> For any privacy concerns, you can reach out directly to Subrata Mazumdar at our Baguiati office or via WhatsApp.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+    <!-- Contact Us Section -->
+    <section id="contact" class="py-16 bg-slate-100 border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center max-w-xl mx-auto mb-10">
+                <span class="text-rose-600 font-semibold text-xs uppercase tracking-wider">Get in Touch</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-1 mb-2">Contact Us</h2>
+                <p class="text-slate-600 text-sm">Have questions about our missions, want to verify our work, or need assistance? Reach out to us anytime.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Office Address Card -->
+                <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200/80 space-y-4">
+                    <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center text-xl font-bold">📍</div>
+                    <h3 class="font-bold text-slate-900 text-lg">Our Office Location</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        <strong>YouS2 Seba Mission</strong><br>
+                        Lokenath Market, Jagatpur, Aswini Nagar,<br>
+                        Baguiati, Kolkata – 700159, West Bengal
+                    </p>
+                    <p class="text-xs text-rose-600 font-semibold pt-2">🕒 Visitors are always welcome!</p>
+                </div>
+
+                <!-- Direct WhatsApp & Organizer Card -->
+                <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200/80 space-y-4">
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-xl font-bold">💬</div>
+                    <h3 class="font-bold text-slate-900 text-lg">Quick Support</h3>
+                    <div class="text-sm text-slate-600 space-y-1">
+                        <p><strong>👤 Organizer:</strong> Subrata Mazumdar</p>
+                        <p><strong>📞 Phone / WhatsApp:</strong> +91 8509788421</p>
+                    </div>
+                    <a href="https://wa.me/918509788421?text=Hi%20Subrata,%20I%20want%20to%20know%20more%20about%20YouS2%20Seba%20Mission" target="_blank" class="block w-full bg-emerald-600 hover:bg-emerald-700 text-white text-center font-semibold py-3 rounded-xl text-sm transition shadow-sm">
+                        📲 Chat on WhatsApp Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Footer -->
     <footer class="bg-slate-900 text-slate-400 py-12 text-center text-sm">
         <div class="max-w-4xl mx-auto px-4 space-y-3">
             <p class="font-bold text-white text-base">YouS2 Seba Mission</p>
             <p class="text-xs text-slate-400">An initiative by Subrata Mazumdar • Lokenath Market, Jagatpur, Aswini Nagar, Baguiati, Kolkata - 700159</p>
             <p class="text-xs">&copy; 2026 YouS2 (yous2.in). All rights reserved.</p>
+        </div>
+        <div class="space-x-4">
+            <a href="#about" class="hover:text-white">Contact Us</a>
+            <a href="#legal-policies" class="hover:text-white">Privacy & Terms</a>
         </div>
     </footer>
 
