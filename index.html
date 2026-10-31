@@ -328,7 +328,7 @@
                         <p><strong>👤 Organizer:</strong> Subrata Mazumdar</p>
                         <p><strong>📞 Phone / WhatsApp:</strong> +91 9635578790</p>
                     </div>
-                    <a href="https://wa.me/919635578790?text=Hi%20Subrata,%20I%20want%20to%20donate%20items%20to%20YouS2%20Seba%20Mission" target="_blank" class="block w-full bg-emerald-600 hover:bg-emerald-700 text-white text-center font-semibold py-3 rounded-xl text-sm transition shadow-sm">
+                    <a href="https://wa.me/918509788421?text=Hi%20Subrata,%20I%20want%20to%20donate%20items%20to%20YouS2%20Seba%20Mission" target="_blank" class="block w-full bg-emerald-600 hover:bg-emerald-700 text-white text-center font-semibold py-3 rounded-xl text-sm transition shadow-sm">
                         📲 Chat on WhatsApp Now
                     </a>
                 </div>
@@ -398,7 +398,7 @@
                 
                 // WhatsApp URL for donor to ping directly
                 const waMsg = `Namaskar Subrata, I have submitted an item donation request:\n• Name: ${data.name}\n• Phone: ${data.phone}\n• Items: ${data.quantity} (${data.category})\n• Delivery: ${data.deliveryMethod}\n• Address: ${data.address}`;
-                document.getElementById('donorWhatsappNotify').href = `https://wa.me/919635578790?text=${encodeURIComponent(waMsg)}`;
+                document.getElementById('donorWhatsappNotify').href = `https://wa.me/918509788421?text=${encodeURIComponent(waMsg)}`;
 
                 document.getElementById('donationSuccessCard').classList.remove('hidden');
             }).catch(error => {
@@ -431,7 +431,7 @@
                 document.getElementById('helpForm').reset();
                 
                 const waText = `Namaskar Subrata, Help requested by ${helpData.name} from ${helpData.location}. Need: ${helpData.category}. Details: ${helpData.details}`;
-                document.getElementById('helpWhatsappLink').href = `https://wa.me/919635578790?text=${encodeURIComponent(waText)}`;
+                document.getElementById('helpWhatsappLink').href = `https://wa.me/918509788421?text=${encodeURIComponent(waText)}`;
                 document.getElementById('helpSuccessMsg').classList.remove('hidden');
             }).catch(error => {
                 btn.innerText = "Submit Help Application";
